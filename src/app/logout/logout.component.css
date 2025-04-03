@@ -1,0 +1,59 @@
+.logout-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.profile-logo {
+    width: 100px;
+    height: 100px;
+    border: 2px solid red; /* Debugging */
+}
+
+
+.profile-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-size: 22px; /* Larger font size */
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.user-email {
+    font-size: 18px;
+    color: gray;
+}
+
+.logout-btn {
+    background-color: #b2b4b6;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,133 @@
+<nav class="navbar" style="height: 60px !important;">
+    <div class="logo">
+        <h2>Task Manager</h2>
+    </div>
+    <div class="user-info" style="text-align: center;">
+        <h2>Welcome, {{ user?.name }}</h2>
+        <p>Email: {{ user?.email }}</p>
+    </div>
+    <div class="nav-links">
+        <button (click)="openProjectModal()">Create Project</button>
+        <button (click)="openLogoutModal()">Logout</button>
+    </div>
+</nav>
+
+<!-- Logout Modal -->
+<div>
+    <app-logout *ngIf="showLogoutModal" (closeModal)="closeLogoutModal()"></app-logout>
+
+</div>
+
+<div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+</div>
+
+
+
+<!-- Project Form Modal -->
+<div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+        <h2>Create New Project</h2>
+        <form (ngSubmit)="editingIndex !== null ? saveProject() : createProject()">
+            <!-- Project Title -->
+            <label>Title:</label>
+            <input type="text" [(ngModel)]="project.title" name="title" required
+                [ngClass]="{ 'invalid': titleError || duplicateError, 'valid': !titleError && !duplicateError }" />
+            <p *ngIf="titleError" class="error-text">Invalid title format!</p>
+            <p *ngIf="duplicateError" class="error-text">Project title already exists!</p>
+
+            <label>Description:</label>
+            <textarea [(ngModel)]="project.description" name="description" required
+                [ngClass]="{ 'invalid': descriptionError, 'valid': !descriptionError }"></textarea>
+            <p *ngIf="descriptionError" class="error-text">Description cannot be empty!</p>
+
+            <!-- Created By -->
+            <label>Created By:</label>
+            <input type="text" [(ngModel)]="project.createdBy" name="createdBy" required
+                [ngClass]="{ 'invalid': createdByError, 'valid': !createdByError }" />
+            <p *ngIf="createdByError" class="error-text">Invalid creator name!</p>
+
+            <!-- Project Manager -->
+            <label>Project Manager:</label>
+            <input type="text" [(ngModel)]="project.projectManager" name="projectManager" required
+                [ngClass]="{ 'invalid': projectManagerError, 'valid': !projectManagerError }" />
+            <p *ngIf="projectManagerError" class="error-text">Invalid project manager name!</p>
+
+            <!-- Start Date -->
+            <label>Start Date:</label>
+            <input type="date" [(ngModel)]="project.startDate" name="startDate" required min="{{ today }}"
+                max="{{ maxDate }}" [ngClass]="{ 'invalid': dateError, 'valid': !dateError }" />
+            <p *ngIf="dateError" class="error-text">Invalid date selection!</p>
+
+            <!-- End Date -->
+            <label>End Date:</label>
+            <input type="date" [(ngModel)]="project.endDate" name="endDate" required min="{{ today }}"
+                max="{{ maxDate }}" [ngClass]="{ 'invalid': dateError, 'valid': !dateError }" />
+
+            <!-- Due Date -->
+            <!-- <label>Due Date:</label>
+            <input type="date" [(ngModel)]="project.dueDate" name="dueDate" required min="{{ today }}"
+                max="{{ maxDate }}" [ngClass]="{ 'invalid': dateError, 'valid': !dateError }" /> -->
+
+            <!-- Team Members -->
+            <label>Team Members:</label>
+            <input type="number" [(ngModel)]="project.teamMembers" name="teamMembers" required
+                [ngClass]="{ 'invalid': teamError, 'valid': !teamError }" />
+            <p *ngIf="teamError" class="error-text">Must have at least 1 team member!</p>
+
+            <button type="submit">{{ editingIndex !== null ? 'Save' : 'Create' }}</button>
+            <button type="button" (click)="closeProjectModal()">Cancel</button>
+        </form>
+
+
+    </div>
+</div>
+
+
+<!-- Projects Table -->
+<div class="project-table-container">
+    <h2>Projects</h2>
+
+    <table class="project-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Created By</th>
+                <th>Project Manager</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Due Days</th>
+                <th>Team Members</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="projects.length === 0">
+                <td colspan="9" class="no-projects-message">No projects available</td>
+            </tr>
+            <tr *ngFor="let project of projects; let i = index" (click)="navigateToTaskCreate(project)"
+                class="clickable-row">
+                <td>{{ project.title }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.createdBy }}</td>
+                <td>{{ project.projectManager }}</td>
+                <td>{{ project.startDate }}</td>
+                <td>{{ project.endDate }}</td>
+                <td>{{ project.dueDays }}</td>
+                <td>{{ project.teamMembers }}</td>
+                <td>
+                    <button class="delete-btn" (click)="deleteProject(i); $event.stopPropagation()">Delete</button>
+                    <button class="edit-btn" (click)="editProject(i); $event.stopPropagation()">Edit</button>
+                </td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>

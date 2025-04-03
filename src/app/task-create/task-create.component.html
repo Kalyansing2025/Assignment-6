@@ -1,0 +1,87 @@
+<nav class="navbar" style="height: 60px !important;">
+    <div class="logo">
+        <h2>Task Manager</h2>
+    </div>
+    <div>
+        <h2>Tasks for Project: {{ projectTitle }}</h2>
+    </div>
+    <div class="nav-links">
+        <button (click)="toggleTaskForm()" *ngIf="!showTaskForm">Create New Task</button>
+        <button (click)="goToHome()">Back to Home</button>
+    </div>
+
+</nav>
+
+<div class="task-create-container">
+    <div *ngIf="tasks.length === 0" class="no-task-message">
+        <h2> No Task Available:</h2>
+    </div>
+
+    <!-- Task List -->
+    <div *ngIf="tasks.length > 0">
+        <h2>Existing Tasks:</h2>
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Assigned To</th>
+                    <th>Status</th>
+                    <th>Estimate</th>
+                    <th>Time Spent</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks; let i = index">
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.assignedTo }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.estimate }} hrs</td>
+                    <td>{{ task.timeSpent }} hrs</td>
+                    <td>
+                        <button class="edit-btn" (click)="editTask(i)">Edit</button>
+                        <button class="delete-btn" (click)="deleteTask(i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Create Task Form -->
+    <div *ngIf="showTaskForm">
+        <h3>{{ editingTaskIndex !== null ? 'Edit Task' : 'Create New Task' }}</h3>
+
+        <div *ngIf="errorMessage" class="message-box error-box">
+            {{ errorMessage }}
+        </div>
+
+        <div *ngIf="successMessage" class="message-box success-box">
+            {{ successMessage }}
+        </div>
+
+        <form (ngSubmit)="createTask()">
+            <label>Title:</label>
+            <input type="text" [(ngModel)]="task.title" name="title" required />
+
+            <label>Assigned To:</label>
+            <input type="text" [(ngModel)]="task.assignedTo" name="assignedTo" required />
+
+            <label>Status:</label>
+            <select [(ngModel)]="task.status" name="status">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <label>Estimate (hours):</label>
+            <input type="number" [(ngModel)]="task.estimate" name="estimate" required />
+
+            <label>Time Spent (hours):</label>
+            <input type="number" [(ngModel)]="task.timeSpent" name="timeSpent" required />
+
+            <button type="submit">{{ editingTaskIndex !== null ? 'Update Task' : 'Create Task' }}</button>
+            <button type="button" (click)="toggleTaskForm()">Cancel</button>
+        </form>
+    </div>
+</div>
