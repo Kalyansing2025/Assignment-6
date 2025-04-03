@@ -148,14 +148,14 @@ export class HomeComponent {
       localStorage.setItem('projects', JSON.stringify(allProjects));
       this.successMessage = 'Project Created Successfully!';
     }
-
+                                                  
     this.errorMessage = '';
     setTimeout(() => (this.successMessage = ''), 2000);
     this.resetProjectForm();
     this.loadProjects();
     this.closeProjectModal();
   }
-
+    
   resetProjectForm() {
     this.project = {
       id: '',
