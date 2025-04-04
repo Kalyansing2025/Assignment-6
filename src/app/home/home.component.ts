@@ -119,26 +119,29 @@ export class HomeComponent {
     this.project.title = this.project.title.trim();
     this.project.createdBy = this.project.createdBy.trim();
     this.project.projectManager = this.project.projectManager.trim();
-
+  
     const validTextPattern = /^(?!.*(.)\1{4,})[A-Za-z\s\-']{3,}$/;
     this.titleError = !validTextPattern.test(this.project.title);
     this.descriptionError = !validTextPattern.test(this.project.description);
     this.createdByError = !validTextPattern.test(this.project.createdBy);
     this.projectManagerError = !validTextPattern.test(this.project.projectManager);
     this.teamError = this.project.teamMembers <= 0;
-
+  
     this.duplicateError = this.projects.some(
       (proj) =>
         proj.title.toLowerCase() === this.project.title.toLowerCase() ||
         proj.createdBy.toLowerCase() === this.project.createdBy.toLowerCase() ||
         proj.projectManager.toLowerCase() === this.project.projectManager.toLowerCase()
     );
-
+  
     if (this.duplicateError) {
       this.clearValidationErrors();
       return;
     }
-
+  
+    // Calculate Due Days Before Saving
+    this.calculateDueDays();
+  
     if (this.editingIndex !== null) {
       this.projects[this.editingIndex] = { ...this.project };
       this.successMessage = 'Project Updated Successfully!';
@@ -151,14 +154,14 @@ export class HomeComponent {
       localStorage.setItem('projects', JSON.stringify(allProjects));
       this.successMessage = 'Project Created Successfully!';
     }
-                                                  
+    
     this.errorMessage = '';
     setTimeout(() => (this.successMessage = ''), 2000);
     this.resetProjectForm();
     this.loadProjects();
     this.closeProjectModal();
   }
-    
+  
   resetProjectForm() {
     this.project = {
       id: '',
@@ -189,6 +192,7 @@ export class HomeComponent {
       setTimeout(() => (this.successMessage = ''), 3000);
       this.closeProjectModal();
       this.editingIndex = null;
+      this.calculateDueDays();
     }
   }
 
@@ -196,9 +200,15 @@ export class HomeComponent {
     if (this.project.startDate && this.project.endDate) {
       const start = new Date(this.project.startDate);
       const end = new Date(this.project.endDate);
-      this.project.dueDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
+      
+      if (end < start) {
+        this.project.dueDays = 0; // Ensure no negative due days
+      } else {
+        this.project.dueDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
+      }
     }
   }
+  
 
   deleteProject(index: number) {
     if (confirm('Are you sure you want to delete this project?')) {
