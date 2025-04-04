@@ -35,7 +35,12 @@
                 <tr *ngFor="let task of tasks; let i = index">
                     <td>{{ task.title }}</td>
                     <td>{{ task.assignedTo }}</td>
-                    <td>{{ task.status }}</td>
+                    <td>
+                        <span [ngClass]="getStatusClass(task.status)">
+                            {{ task.status }}
+                        </span>
+                    </td>
+
                     <td>{{ task.estimate }} hrs</td>
                     <td>{{ task.timeSpent }} hrs</td>
                     <td>

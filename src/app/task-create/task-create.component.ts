@@ -122,6 +122,20 @@ export class TaskCreateComponent implements OnInit {
       this.errorMessage = '';
     }, 3000);
   }
+
+  getStatusClass(status: string): string {
+    switch (status) {
+      case 'High':
+        return 'status-high';
+      case 'Medium':
+        return 'status-medium';
+      case 'Low':
+        return 'status-low';
+      default:
+        return '';
+    }
+  }
+  
 }
 
 

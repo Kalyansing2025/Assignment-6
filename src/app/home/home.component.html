@@ -110,8 +110,7 @@
             <tr *ngIf="projects.length === 0">
                 <td colspan="9" class="no-projects-message">No projects available</td>
             </tr>
-            <tr *ngFor="let project of projects; let i = index" (click)="navigateToTaskCreate(project)"
-                class="clickable-row">
+            <tr *ngFor="let project of projects; let i = index" class="clickable-row">
                 <td>{{ project.title }}</td>
                 <td>{{ project.description }}</td>
                 <td>{{ project.createdBy }}</td>
@@ -120,9 +119,12 @@
                 <td>{{ project.endDate }}</td>
                 <td>{{ project.dueDays }}</td>
                 <td>{{ project.teamMembers }}</td>
-                <td>
-                    <button class="delete-btn" (click)="deleteProject(i); $event.stopPropagation()">Delete</button>
+                <td class="action">
+                    <button class="edit-btn" (click)="navigateToTaskCreate(project); $event.stopPropagation()">Add
+                        Task</button>
                     <button class="edit-btn" (click)="editProject(i); $event.stopPropagation()">Edit</button>
+                    <button class="delete-btn" (click)="deleteProject(i); $event.stopPropagation()">Delete</button>
+
                 </td>
 
             </tr>

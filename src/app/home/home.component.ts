@@ -59,13 +59,16 @@ export class HomeComponent {
     const todayDate = new Date();
     this.today = this.formatDate(todayDate);
     const maxDateValue = new Date();
-    maxDateValue.setFullYear(todayDate.getFullYear() + 5);
+    maxDateValue.setFullYear(todayDate.getFullYear() + 5);  
     this.maxDate = this.formatDate(maxDateValue);
   }
 
   navigateToTaskCreate(project: any) {
-    this.router.navigate(['/create-task', project.id], { queryParams: { project: project.title } });
+    this.router.navigate(['/create-task', project.id], { 
+      queryParams: { project: project.title } 
+    });
   }
+  
 
   loadUser() {
     const storedUser = localStorage.getItem('user');
