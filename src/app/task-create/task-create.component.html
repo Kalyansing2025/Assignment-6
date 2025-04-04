@@ -9,8 +9,21 @@
         <button (click)="toggleTaskForm()" *ngIf="!showTaskForm">Create New Task</button>
         <button (click)="goToHome()">Back to Home</button>
     </div>
-
 </nav>
+
+<div class="filter-container">
+    <button class="s" (click)="toggleSortOrder()">Toggle Sort Order by Task</button>
+
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" [(ngModel)]="filterStatus">
+        <option value="">All</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+</div>
+
+
 
 <div class="task-create-container">
     <div *ngIf="tasks.length === 0" class="no-task-message">
@@ -32,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let task of tasks; let i = index">
+                <tr *ngFor="let task of filteredTasks(); let i = index">
                     <td>{{ task.title }}</td>
                     <td>{{ task.assignedTo }}</td>
                     <td>

@@ -162,4 +162,37 @@ button[type="button"]:hover {
     color: #5cb85c;
     font-weight: bold;
   }
-  
+  .filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Button - Simple Styling */
+.sort-button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.sort-button:hover {
+    /* background-color: #f0f0f0; */
+}
+
+/* Label */
+label {
+    font-size: 14px;
+}
+
+/* Dropdown */
+select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}

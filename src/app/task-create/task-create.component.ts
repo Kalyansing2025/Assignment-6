@@ -10,13 +10,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./task-create.component.css'],
   imports: [FormsModule, CommonModule],
 })
-
-
 export class TaskCreateComponent implements OnInit {
   projectTitle: string = '';
   tasks: any[] = [];
   showTaskForm: boolean = false;
-  editingTaskIndex: number | null = null; // 👈 Track editing task index
+  editingTaskIndex: number | null = null;
 
   task = {
     title: '',
@@ -28,6 +26,13 @@ export class TaskCreateComponent implements OnInit {
 
   errorMessage: string = '';   
   successMessage: string = ''; 
+  filterTitle: string = '';
+  filterAssignedTo: string = '';
+  filterStatus: string = '';
+  filterEstimate: number | null = null;
+  filterTimeSpent: number | null = null;
+
+  sortAscending: boolean = true; // Sorting order flag
 
   constructor(private route: ActivatedRoute, public router: Router) {}
 
@@ -45,11 +50,29 @@ export class TaskCreateComponent implements OnInit {
     const storedTasks = localStorage.getItem('tasks');
     const allTasks = storedTasks ? JSON.parse(storedTasks) : [];
     this.tasks = allTasks.filter((task: any) => task.project === this.projectTitle);
+    this.sortTasks();
+  }
+
+  get uniqueUsers() {
+    return [...new Set(this.tasks.map(task => task.assignedTo))];
+  }
+
+ 
+
+  sortTasks() {
+    this.tasks.sort((a, b) => {
+      return this.sortAscending ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
+    });
+  }
+
+  toggleSortOrder() {
+    this.sortAscending = !this.sortAscending;
+    this.sortTasks();
   }
 
   toggleTaskForm() {
     this.showTaskForm = !this.showTaskForm;
-    this.editingTaskIndex = null; // Reset editing mode when opening form
+    this.editingTaskIndex = null;
   }
 
   createTask() {
@@ -63,13 +86,11 @@ export class TaskCreateComponent implements OnInit {
     const tasks = storedTasks ? JSON.parse(storedTasks) : [];
 
     if (this.editingTaskIndex !== null) {
-      // Update existing task
       const taskIndex = this.tasks.findIndex(t => t.title === this.tasks[this.editingTaskIndex!].title);
       tasks[taskIndex] = { ...this.task, project: this.projectTitle };
       this.tasks[this.editingTaskIndex] = { ...this.task, project: this.projectTitle };
       this.successMessage = 'Task Updated Successfully!';
     } else {
-      // Create new task
       const newTask = { ...this.task, project: this.projectTitle };
       tasks.push(newTask);
       this.tasks.push(newTask);
@@ -77,15 +98,15 @@ export class TaskCreateComponent implements OnInit {
     }
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    
+    this.sortTasks();
     this.task = { title: '', assignedTo: '', status: 'Medium', estimate: 0, timeSpent: 0 };
-    this.editingTaskIndex = null; // Reset editing index
+    this.editingTaskIndex = null;
     this.showTaskForm = false;
     this.clearMessagesAfterDelay();
   }
 
   editTask(index: number) {
-    this.task = { ...this.tasks[index] }; // Populate form with task data
+    this.task = { ...this.tasks[index] };
     this.editingTaskIndex = index;
     this.showTaskForm = true;
   }
@@ -95,11 +116,7 @@ export class TaskCreateComponent implements OnInit {
       const storedTasks = localStorage.getItem('tasks');
       const tasks = storedTasks ? JSON.parse(storedTasks) : [];
       
-      // Find the task index in localStorage
-     const taskIndex = tasks.findIndex((t: { title: string }) => 
-  t.title === this.tasks[index].title
-);
-
+      const taskIndex = tasks.findIndex((t: { title: string }) => t.title === this.tasks[index].title);
       if (taskIndex !== -1) {
         tasks.splice(taskIndex, 1);
         localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -115,7 +132,6 @@ export class TaskCreateComponent implements OnInit {
     this.router.navigate(['/home']);
   }
   
-
   clearMessagesAfterDelay() {
     setTimeout(() => {
       this.successMessage = '';
@@ -135,7 +151,11 @@ export class TaskCreateComponent implements OnInit {
         return '';
     }
   }
+  filteredTasks() {
+    return this.tasks.filter(task =>
+      (!this.filterStatus || task.status === this.filterStatus) // Filter by status
+    );
+  }
   
 }
-
 

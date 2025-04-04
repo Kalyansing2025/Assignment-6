@@ -204,3 +204,29 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.add-task-btn{
+    background-color: #cd5fc4;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+}
+.sorting-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+select, button {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+

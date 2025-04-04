@@ -17,6 +17,7 @@ export class HomeComponent {
   projects: any[] = [];
   user: any = null;
   editingIndex: number | null = null;
+  submitted: boolean = false;
   
   today: string = '';
   maxDate: string = '';
@@ -103,64 +104,76 @@ export class HomeComponent {
     this.showLogoutModal = false;
   }
 
-  clearValidationErrors() {
-    setTimeout(() => {
-      this.titleError = false;
-      this.descriptionError = false;
-      this.createdByError = false;
-      this.projectManagerError = false;
-      this.dateError = false;
-      this.duplicateError = false;
-      this.teamError = false;
-    }, 3000);
+clearValidationErrors() {
+  this.titleError = false;
+  this.descriptionError = false;
+  this.createdByError = false;
+  this.projectManagerError = false;
+  this.dateError = false;
+  this.duplicateError = false;
+  this.teamError = false;
+}
+
+
+createProject() {
+  this.clearValidationErrors(); // Reset errors
+
+  // Trim input values to avoid accidental spaces
+  this.project.title = this.project.title?.trim();
+  this.project.createdBy = this.project.createdBy?.trim();
+  this.project.projectManager = this.project.projectManager?.trim();
+
+  const validTextPattern = /^(?!.*(.)\1{4,})[A-Za-z\s\-']{3,}$/;
+
+  // Validate required fields
+  this.titleError = !this.project.title || !validTextPattern.test(this.project.title);
+  this.descriptionError = !this.project.description;
+  this.createdByError = !this.project.createdBy || !validTextPattern.test(this.project.createdBy);
+  this.projectManagerError = !this.project.projectManager || !validTextPattern.test(this.project.projectManager);
+  this.teamError = this.project.teamMembers <= 0;
+
+  // Prevent saving if any field is invalid
+  if (this.titleError || this.descriptionError || this.createdByError || this.projectManagerError || this.teamError) {
+      return; // Stop execution
   }
 
-  createProject() {
-    this.project.title = this.project.title.trim();
-    this.project.createdBy = this.project.createdBy.trim();
-    this.project.projectManager = this.project.projectManager.trim();
-  
-    const validTextPattern = /^(?!.*(.)\1{4,})[A-Za-z\s\-']{3,}$/;
-    this.titleError = !validTextPattern.test(this.project.title);
-    this.descriptionError = !validTextPattern.test(this.project.description);
-    this.createdByError = !validTextPattern.test(this.project.createdBy);
-    this.projectManagerError = !validTextPattern.test(this.project.projectManager);
-    this.teamError = this.project.teamMembers <= 0;
-  
-    this.duplicateError = this.projects.some(
-      (proj) =>
-        proj.title.toLowerCase() === this.project.title.toLowerCase() ||
-        proj.createdBy.toLowerCase() === this.project.createdBy.toLowerCase() ||
-        proj.projectManager.toLowerCase() === this.project.projectManager.toLowerCase()
-    );
-  
-    if (this.duplicateError) {
-      this.clearValidationErrors();
-      return;
-    }
-  
-    // Calculate Due Days Before Saving
-    this.calculateDueDays();
-  
-    if (this.editingIndex !== null) {
-      this.projects[this.editingIndex] = { ...this.project };
-      this.successMessage = 'Project Updated Successfully!';
-    } else {
-      this.project.id = this.generateUniqueId();
-      const newProject = { ...this.project, userEmail: this.user.email };
-      let storedProjects = localStorage.getItem('projects');
-      let allProjects = storedProjects ? JSON.parse(storedProjects) : [];
-      allProjects.push(newProject);
-      localStorage.setItem('projects', JSON.stringify(allProjects));
-      this.successMessage = 'Project Created Successfully!';
-    }
-    
-    this.errorMessage = '';
-    setTimeout(() => (this.successMessage = ''), 2000);
-    this.resetProjectForm();
-    this.loadProjects();
-    this.closeProjectModal();
+  // Check for duplicate project titles
+  this.duplicateError = this.projects.some(
+    (proj) =>
+      proj.title.toLowerCase() === this.project.title.toLowerCase() ||
+      proj.createdBy.toLowerCase() === this.project.createdBy.toLowerCase() ||
+      proj.projectManager.toLowerCase() === this.project.projectManager.toLowerCase()
+  );
+
+  if (this.duplicateError) {
+    this.clearValidationErrors();
+    return;
   }
+
+  // Calculate Due Days Before Saving
+  this.calculateDueDays();
+
+  if (this.editingIndex !== null) {
+    this.projects[this.editingIndex] = { ...this.project };
+    this.successMessage = 'Project Updated Successfully!';
+  } else {
+    this.project.id = this.generateUniqueId();
+    const newProject = { ...this.project, userEmail: this.user.email };
+    let storedProjects = localStorage.getItem('projects');
+    let allProjects = storedProjects ? JSON.parse(storedProjects) : [];
+    allProjects.push(newProject);
+    localStorage.setItem('projects', JSON.stringify(allProjects));
+    this.successMessage = 'Project Created Successfully!';
+  }
+
+  this.errorMessage = '';
+  setTimeout(() => (this.successMessage = ''), 2000);
+  this.resetProjectForm();
+  this.loadProjects();
+  this.closeProjectModal();
+}
+
+
   
   resetProjectForm() {
     this.project = {
@@ -237,4 +250,29 @@ export class HomeComponent {
   generateUniqueId(): string {
     return 'P' + Math.random().toString(36).substr(2, 9);
   }
+  sortBy: string = 'title'; // Default sorting field
+sortAscending: boolean = true; // Default sort order
+
+toggleSortOrder() {
+    this.sortAscending = !this.sortAscending; // Toggle between ascending & descending
+    this.sortProjects();
+}
+
+sortProjects() {
+    this.projects.sort((a, b) => {
+        let valueA = a[this.sortBy];
+        let valueB = b[this.sortBy];
+
+        // Convert date strings to Date objects for proper sorting
+        if (this.sortBy === 'startDate' || this.sortBy === 'endDate') {
+            valueA = new Date(valueA);
+            valueB = new Date(valueB);
+        }
+
+        if (valueA < valueB) return this.sortAscending ? -1 : 1;
+        if (valueA > valueB) return this.sortAscending ? 1 : -1;
+        return 0;
+    });
+}
+
 }
