@@ -1,17 +1,24 @@
-<nav class="navbar" style="height: 60px !important;">
+<nav class="navbar">
     <div class="logo">
         <h2>Task Manager</h2>
     </div>
-    <div class="user-info" style="text-align: center;">
+
+    <div class="user-info">
         <h2>Welcome, {{ user?.name }}</h2>
         <p>Email: {{ user?.email }}</p>
     </div>
+
     <div class="nav-links">
         <button (click)="openProjectModal()">Create Project</button>
         <button (click)="openLogoutModal()">Logout</button>
 
+
     </div>
 </nav>
+
+
+
+
 
 <div>
     <app-logout *ngIf="showLogoutModal" (closeModal)="closeLogoutModal()"></app-logout>
@@ -82,7 +89,10 @@
 </div>
 
 <div class="sorting-container">
-    <button (click)="toggleSortOrder()">Toggle Sort Order</button>
+    <button (click)="toggleTheme()" class="theme-toggle">
+        Switch to {{ theme === 'light' ? 'Dark' : 'Light' }} Mode
+    </button>
+    <button (click)="toggleSortOrder()">Ascending & Descending Order</button>
 
     <div class="sorting-container">
         <input type="text" [(ngModel)]="projectSearchTerm" placeholder="Search Projects..." class="search-input" />
@@ -101,47 +111,47 @@
     </div>
 
 </div>
-
 <div class="project-table-container">
     <h2>Projects</h2>
-    <table class="project-table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created By</th>
-                <th>Project Manager</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Due Days</th>
-                <th>Team Members</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngIf="projects.length === 0">
-                <td colspan="9" class="no-projects-message">No projects available</td>
-            </tr>
-            <tr *ngFor="let project of getFilteredProjects(); let i = index" class="clickable-row">
-                <td>{{ project.title }}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.createdBy }}</td>
-                <td>{{ project.projectManager }}</td>
-                <td>{{ project.startDate }}</td>
-                <td>{{ project.endDate }}</td>
-                <td>{{ project.dueDays }}</td>
-                <td>{{ project.teamMembers }}</td>
-                <td>
-                    <button class="add-task-btn" (click)="navigateToTaskCreate(project); $event.stopPropagation()">Add
-                        Task</button>
-                    <button class="edit-btn" (click)="editProject(i); $event.stopPropagation()">Edit</button>
-                    <button class="delete-btn" (click)="deleteProject(i); $event.stopPropagation()">Delete</button>
+    <div class="table-responsive">
+        <table class="project-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Created By</th>
+                    <th>Project Manager</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Due Days</th>
+                    <th>Team Members</th>
+                    <th>Tasks</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="projects.length === 0">
+                    <td colspan="9" class="no-projects-message">No projects available</td>
+                </tr>
+                <tr *ngFor="let project of getFilteredProjects(); let i = index" class="clickable-row">
+                    <td>{{ project.title }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.createdBy }}</td>
+                    <td>{{ project.projectManager }}</td>
+                    <td>{{ project.startDate }}</td>
+                    <td>{{ project.endDate }}</td>
+                    <td>{{ project.dueDays }}</td>
+                    <td>{{ project.teamMembers }}</td>
+                    <td>{{ getTaskCountForProject(project.title) }}</td>
 
-                </td>
-
-            </tr>
-
-
-        </tbody>
-    </table>
+                    <td>
+                        <button class="add-task-btn"
+                            (click)="navigateToTaskCreate(project); $event.stopPropagation()">Add Task</button>
+                        <button class="edit-btn" (click)="editProject(i); $event.stopPropagation()">Edit</button>
+                        <button class="delete-btn" (click)="deleteProject(i); $event.stopPropagation()">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

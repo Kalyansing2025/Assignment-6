@@ -128,18 +128,37 @@ button:hover {
 
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    background-color: #007BFF;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    padding: 10px 20px;
+    height: 80px;
+    background-color: #b9a6aa;
+    border-bottom: 1px solid #ccc;
+    gap: 10px;
+  }
 
-.logo h2 {
+  .logo h2 {
     margin: 0;
-    font-size: 22px;
-}
+    font-size: 20px;
+  }
+
+
+  .user-info {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .user-info h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .user-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
 
 .nav-links button {
     padding: 10px 15px;
@@ -158,6 +177,27 @@ button:hover {
     background-color: #0056b3;
     color: white;
 }
+
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+    }
+  
+    .nav-links {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  
+    .user-info {
+      text-align: left;
+      width: 100%;
+    }
+  }
+
 
 .invalid {
     border: 2px solid red;
@@ -237,7 +277,7 @@ select, button {
     padding: 12px 20px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     flex-wrap: wrap;
 }
 
@@ -246,4 +286,22 @@ select, button {
     align-items: center;
     gap: 10px; /* Keeps label and dropdown close together */
 }
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  @media (max-width: 600px) {
+    .add-task-btn,
+    .edit-btn,
+    .delete-btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 6px;
+    }
+  }
+
+
+      
 

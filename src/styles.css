@@ -1,1 +1,492 @@
-/* You can add global styles to this file, and also import other style files */
+/* Base dark theme improvements */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* Navbar */
+  body.dark-theme .navbar {
+    background-color: #1f1f1f;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+  }
+  
+  /* Buttons */
+  body.dark-theme button {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+  }
+  
+  body.dark-theme button:hover {
+    background-color: #3a3a3a;
+  }
+  
+  /* Modal */
+  body.dark-theme .modal-content {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Inputs */
+  body.dark-theme input,
+  body.dark-theme textarea,
+  body.dark-theme select {
+    background-color: #2c2c2c;
+    color: #eaeaea;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 0.5rem;
+  }
+  
+  /* Form field focus state */
+  body.dark-theme input:focus,
+  body.dark-theme textarea:focus,
+  body.dark-theme select:focus {
+    outline: none;
+    border-color: #4c9aff;
+    box-shadow: 0 0 5px rgba(76, 154, 255, 0.3);
+  }
+  
+  /* Tables */
+  /* === Project Table: Dark Mode === */
+body.dark-theme .project-table-container {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
+  }
+  
+  body.dark-theme .project-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  body.dark-theme .project-table th,
+  body.dark-theme .project-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  
+  body.dark-theme .project-table th {
+    background-color: #272727;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #444;
+  }
+  
+  body.dark-theme .project-table td {
+    background-color: #202020;
+  }
+  
+  body.dark-theme .clickable-row:hover {
+    background-color: #2a2a2a;
+    cursor: pointer;
+  }
+  
+  body.dark-theme .no-projects-message {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    padding: 1rem;
+    background-color: #181818;
+    border-radius: 6px;
+  }
+  
+  
+  body.dark-theme .project-table th,
+  body.dark-theme .project-table td {
+    border-color: #444;
+    color: #eaeaea;
+  }
+  
+  body.dark-theme .project-table th {
+    background-color: #2a2a2a;
+  }
+  
+  body.dark-theme .clickable-row:hover {
+    background-color: #2f2f2f;
+  }
+  
+  /* Messages */
+  body.dark-theme .success-message {
+    background-color: #1e3d2f;
+    color: #a4f4b5;
+    border-left: 4px solid #38e38e;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  body.dark-theme .error-message {
+    background-color: #3b1e1e;
+    color: #ff9999;
+    border-left: 4px solid #ff6b6b;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+  
+  body.dark-theme .error-text {
+    color: #ff6b6b;
+  }
+  
+  /* Sorting container */
+  body.dark-theme .sorting-container {
+    background-color: #1f1f1f;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Search input */
+  body.dark-theme .search-input {
+    background-color: #2c2c2c;
+    border: 1px solid #555;
+    color: #eaeaea;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Add/Edit/Delete Task buttons */
+  body.dark-theme .add-task-btn {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  body.dark-theme .add-task-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* body.dark-theme .edit-btn {
+    background-color: #ffc107;
+    color: #000;
+  } */
+/*   
+  body.dark-theme .edit-btn:hover {
+    background-color: #e0a800;
+  } */
+  
+  /* body.dark-theme .delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  body.dark-theme .delete-btn:hover {
+    background-color: #c82333;
+  } */
+  /* === Project Form Fields === */
+  body.dark-theme form,
+  body.dark-theme .project-form 
+   {
+    background-color: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Labels */
+  body.dark-theme label {
+    color: #cccccc;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: inline-block;
+  }
+  
+  /* Inputs, Textareas, Selects */
+  body.dark-theme input,
+  body.dark-theme textarea,
+  body.dark-theme select {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  body.dark-theme input:focus,
+  body.dark-theme textarea:focus,
+  body.dark-theme select:focus {
+    border-color: #4c9aff;
+    box-shadow: 0 0 5px rgba(76, 154, 255, 0.4);
+    outline: none;
+  }
+  
+  /* Validation Styles */
+  body.dark-theme .error-text {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+  
+  body.dark-theme .invalid {
+    border-color: #ff6b6b !important;
+  }
+  
+  body.dark-theme .valid {
+    border-color: #4caf50 !important;
+  }
+  
+  /* Buttons inside the form */
+  body.dark-theme form button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    background-color: #3c3c3c;
+    color: #f1f1f1;
+    border: 1px solid #555;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  body.dark-theme form button:hover {
+    background-color: #4a4a4a;
+  }
+  
+  /* Group buttons side by side */
+  body.dark-theme form button[type="submit"],
+  body.dark-theme form button[type="button"] {
+    margin-right: 0.5rem;
+    display: inline-block;
+  }
+  
+  /* Modal title */
+  body.dark-theme .modal-content h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  /* === Dark Mode: Task Create Section === */
+body.dark-theme .task-create-container {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
+  }
+  
+  /* Headings */
+  body.dark-theme .task-create-container h2,
+  body.dark-theme .task-create-container h3 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  /* No task message */
+  body.dark-theme .no-task-message {
+    background-color: #262626;
+    border-left: 4px solid #555;
+    padding: 1rem;
+    border-radius: 6px;
+    color: #ccc;
+    font-style: italic;
+  }
+  
+  /* Task table */
+  body.dark-theme .task-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  body.dark-theme .task-table th,
+  body.dark-theme .task-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+  
+  body.dark-theme .task-table th {
+    background-color: #272727;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  
+  body.dark-theme .task-table td {
+    background-color: #202020;
+  }
+  
+  body.dark-theme .task-table tr:hover {
+    background-color: #2a2a2a;
+  }
+  
+  /* Status badge styling (High/Medium/Low) */
+  body.dark-theme .High {
+    color: #ff6b6b;
+    font-weight: bold;
+  }
+  
+  body.dark-theme .Medium {
+    color: #ffc107;
+    font-weight: bold;
+  }
+  
+  body.dark-theme .Low {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  body.dark-theme .task-create-container form {
+    margin-top: 2rem;
+    background-color: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  body.dark-theme .task-create-container label {
+    color: #cccccc;
+    font-weight: 500;
+  }
+  
+  body.dark-theme .task-create-container input,
+  body.dark-theme .task-create-container select {
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  
+  body.dark-theme .task-create-container input:focus,
+  body.dark-theme .task-create-container select:focus {
+    border-color: #4c9aff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 154, 255, 0.4);
+  }
+  
+  /* Buttons */
+  body.dark-theme .task-create-container button {
+    background-color: #3c3c3c;
+    color: #f1f1f1;
+    border: 1px solid #555;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  body.dark-theme .task-create-container button:hover {
+    background-color: #4a4a4a;
+  }
+  
+  /* Form buttons side-by-side */
+  body.dark-theme .task-create-container form button[type="submit"],
+  body.dark-theme .task-create-container form button[type="button"] {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+  
+  /* Message boxes */
+  body.dark-theme .message-box {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  
+  body.dark-theme .success-box {
+    background-color: #1e3d2f;
+    color: #a4f4b5;
+    border-left: 4px solid #38e38e;
+  }
+  
+  body.dark-theme .error-box {
+    background-color: #3b1e1e;
+    color: #ff9999;
+    border-left: 4px solid #ff6b6b;
+  }
+  /* === Navbar Dark Mode === */
+body.dark-theme .navbar {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  }
+  
+  body.dark-theme .navbar h2 {
+    margin: 0;
+    color: #ffffff;
+  }
+  
+  /* Navbar buttons */
+  body.dark-theme .nav-links button {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  body.dark-theme .nav-links button:hover {
+    background-color: #3a3a3a;
+  }
+  
+  /* === Filter Container Dark Mode === */
+  body.dark-theme .filter-container {
+    margin-top: 1rem;
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  body.dark-theme .search-input,
+  body.dark-theme .filter-container select {
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+  
+  body.dark-theme .filter-container label {
+    color: #cccccc;
+    margin-right: 0.5rem;
+  }
+  body.dark-theme .edit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  body.dark-theme .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  body.dark-theme .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  body.dark-theme .delete-btn:hover {
+    background-color: #a82332;
+  }
+  

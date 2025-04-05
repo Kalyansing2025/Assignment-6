@@ -21,6 +21,7 @@ export class HomeComponent {
   
   today: string = '';
   maxDate: string = '';
+  theme: string = 'light'; 
 
   project = {
     id: '',
@@ -48,8 +49,15 @@ export class HomeComponent {
   teamError = false;
 
   constructor(private router: Router) {}
+ 
 
+ 
   ngOnInit() {
+    const storedTheme = localStorage.getItem('theme');
+    this.theme = storedTheme ?? 'light';
+    document.body.className = '';
+    document.body.classList.add(`${this.theme}-theme`);
+    localStorage.setItem('theme', this.theme);  
     const storedUser = localStorage.getItem('loggedInUser');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
@@ -58,13 +66,14 @@ export class HomeComponent {
       this.user = null;
       this.projects = [];
     }
-
+  
     const todayDate = new Date();
     this.today = this.formatDate(todayDate);
     const maxDateValue = new Date();
-    maxDateValue.setFullYear(todayDate.getFullYear() + 5);  
+    maxDateValue.setFullYear(todayDate.getFullYear() + 5);
     this.maxDate = this.formatDate(maxDateValue);
   }
+  
 
   navigateToTaskCreate(project: any) {
     this.router.navigate(['/create-task', project.id], { 
@@ -222,6 +231,13 @@ createProject() {
       }
     }
   }
+
+  getTaskCountForProject(projectTitle: string): number {
+    const allTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    return allTasks.filter((task: any) => task.project === projectTitle).length;
+  }
+  
+  
   
 
   deleteProject(index: number) {
@@ -285,4 +301,11 @@ getFilteredProjects() {
   );
 }
 
+toggleTheme() {
+  this.theme = this.theme === 'light' ? 'dark' : 'light';
+  localStorage.setItem('theme', this.theme);
+  document.body.className = '';
+  document.body.classList.add(`${this.theme}-theme`);
+
+}
 }
