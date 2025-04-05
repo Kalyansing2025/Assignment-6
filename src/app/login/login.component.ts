@@ -27,7 +27,7 @@ export class LoginComponent {
     const storedUsers = localStorage.getItem('users');
     const users = storedUsers ? JSON.parse(storedUsers) : [];
 
-    // Find user with matching username and password
+  
     const validUser = users.find(
       (user: any) => user.username === this.username && user.password === this.password
     );
@@ -35,7 +35,7 @@ export class LoginComponent {
     if (validUser) {
       this.successMessage = 'Login successful! Redirecting...';
 
-      // Store logged-in user info
+   
       localStorage.setItem(
         'loggedInUser',
         JSON.stringify({ name: validUser.username, email: validUser.email })

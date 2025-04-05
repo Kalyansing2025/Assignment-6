@@ -1,4 +1,4 @@
-/* Modal Overlay */
+
 .modal {
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Content */
+
 .modal-content {
     background: #ffffff;
     padding: 50px;
@@ -22,7 +22,7 @@
     text-align: start;
 }
 
-/* Form Inputs */
+
 .modal-content input,
 .modal-content textarea {
     width: 100%;
@@ -32,7 +32,7 @@
     border-radius: 5px;
 }
 
-/* Buttons */
+
 button {
     margin-top: 10px;
     margin-left: 6px;
@@ -109,7 +109,7 @@ button:hover {
     background-color: #c82333;
 }
 
-/* No Projects Message */
+
 .no-projects-message {
     text-align: center;
     font-size: 18px;
@@ -158,19 +158,19 @@ button:hover {
     background-color: #0056b3;
     color: white;
 }
-/* Red border for invalid inputs */
+
 .invalid {
     border: 2px solid red;
     background-color: #ffe6e6;
   }
   
-  /* Green border for valid inputs */
+
   .valid {
     border: 2px solid green;
     background-color: #e6ffe6;
   }
   
-  /* Error message styling */
+  
   .error-text {
     color: red;
     font-size: 14px;
@@ -229,4 +229,21 @@ select, button {
     cursor: pointer;
 }
 
+.sorting-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sorting-container .sorting-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Keeps label and dropdown close together */
+}
 

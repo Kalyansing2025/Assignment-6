@@ -21,7 +21,7 @@
 .profile-logo {
     width: 100px;
     height: 100px;
-    border: 2px solid red; /* Debugging */
+    border: 2px solid red;
 }
 
 
@@ -33,7 +33,7 @@
 }
 
 .username {
-    font-size: 22px; /* Larger font size */
+    font-size: 22px; 
     font-weight: bold;
     margin: 5px 0;
 }

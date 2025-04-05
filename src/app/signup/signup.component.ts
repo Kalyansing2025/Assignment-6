@@ -30,7 +30,7 @@ export class SignupComponent {
     const storedUsers = localStorage.getItem('users');
     const users = storedUsers ? JSON.parse(storedUsers) : [];
 
-    // Check if email already exists
+   
     if (users.some((user: any) => user.email === this.email)) {
       this.emailExists = true;
       this.errorMessage = 'Email is already registered!';
@@ -40,13 +40,13 @@ export class SignupComponent {
       this.errorMessage = '';
     }
 
-    // Save user
+   
     users.push({ username: this.username, email: this.email, password: this.password });
     localStorage.setItem('users', JSON.stringify(users));
 
     this.successMessage = 'Account created successfully! Redirecting to login...';
 
-    // Redirect to login page
+  
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 2000);

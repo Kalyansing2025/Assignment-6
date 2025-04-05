@@ -34,6 +34,8 @@ export class HomeComponent {
     dueDays: 0,
   };
 
+  projectSearchTerm: string = '';
+
   successMessage: string = '';
   errorMessage: string = '';
 
@@ -116,28 +118,27 @@ clearValidationErrors() {
 
 
 createProject() {
-  this.clearValidationErrors(); // Reset errors
+  this.clearValidationErrors();
 
-  // Trim input values to avoid accidental spaces
+
   this.project.title = this.project.title?.trim();
   this.project.createdBy = this.project.createdBy?.trim();
   this.project.projectManager = this.project.projectManager?.trim();
 
   const validTextPattern = /^(?!.*(.)\1{4,})[A-Za-z\s\-']{3,}$/;
 
-  // Validate required fields
+ 
   this.titleError = !this.project.title || !validTextPattern.test(this.project.title);
   this.descriptionError = !this.project.description;
   this.createdByError = !this.project.createdBy || !validTextPattern.test(this.project.createdBy);
   this.projectManagerError = !this.project.projectManager || !validTextPattern.test(this.project.projectManager);
   this.teamError = this.project.teamMembers <= 0;
 
-  // Prevent saving if any field is invalid
+
   if (this.titleError || this.descriptionError || this.createdByError || this.projectManagerError || this.teamError) {
-      return; // Stop execution
+      return; 
   }
 
-  // Check for duplicate project titles
   this.duplicateError = this.projects.some(
     (proj) =>
       proj.title.toLowerCase() === this.project.title.toLowerCase() ||
@@ -150,7 +151,7 @@ createProject() {
     return;
   }
 
-  // Calculate Due Days Before Saving
+ 
   this.calculateDueDays();
 
   if (this.editingIndex !== null) {
@@ -215,7 +216,7 @@ createProject() {
       const end = new Date(this.project.endDate);
       
       if (end < start) {
-        this.project.dueDays = 0; // Ensure no negative due days
+        this.project.dueDays = 0; 
       } else {
         this.project.dueDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
       }
@@ -250,11 +251,11 @@ createProject() {
   generateUniqueId(): string {
     return 'P' + Math.random().toString(36).substr(2, 9);
   }
-  sortBy: string = 'title'; // Default sorting field
-sortAscending: boolean = true; // Default sort order
+  sortBy: string = 'title'; 
+sortAscending: boolean = true; 
 
 toggleSortOrder() {
-    this.sortAscending = !this.sortAscending; // Toggle between ascending & descending
+    this.sortAscending = !this.sortAscending; 
     this.sortProjects();
 }
 
@@ -263,7 +264,7 @@ sortProjects() {
         let valueA = a[this.sortBy];
         let valueB = b[this.sortBy];
 
-        // Convert date strings to Date objects for proper sorting
+
         if (this.sortBy === 'startDate' || this.sortBy === 'endDate') {
             valueA = new Date(valueA);
             valueB = new Date(valueB);
@@ -273,6 +274,15 @@ sortProjects() {
         if (valueA > valueB) return this.sortAscending ? 1 : -1;
         return 0;
     });
+    
+}                                                           
+
+getFilteredProjects() {
+  return this.projects.filter(project =>
+      project.title.toLowerCase().includes(this.projectSearchTerm.toLowerCase()) ||
+      project.projectManager.toLowerCase().includes(this.projectSearchTerm.toLowerCase()) ||
+      project.createdBy.toLowerCase().includes(this.projectSearchTerm.toLowerCase())
+  );
 }
 
 }

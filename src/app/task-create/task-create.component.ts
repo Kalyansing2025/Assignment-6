@@ -24,6 +24,8 @@ export class TaskCreateComponent implements OnInit {
     timeSpent: 0,
   };
 
+  taskSearchTerm: string = '';
+
   errorMessage: string = '';   
   successMessage: string = ''; 
   filterTitle: string = '';
@@ -32,7 +34,7 @@ export class TaskCreateComponent implements OnInit {
   filterEstimate: number | null = null;
   filterTimeSpent: number | null = null;
 
-  sortAscending: boolean = true; // Sorting order flag
+  sortAscending: boolean = true; 
 
   constructor(private route: ActivatedRoute, public router: Router) {}
 
@@ -152,10 +154,19 @@ export class TaskCreateComponent implements OnInit {
     }
   }
   filteredTasks() {
-    return this.tasks.filter(task =>
-      (!this.filterStatus || task.status === this.filterStatus) // Filter by status
-    );
-  }
+    return this.tasks
+        .filter(task => 
+            (!this.filterStatus || task.status === this.filterStatus) &&
+            (task.title.toLowerCase().includes(this.taskSearchTerm.toLowerCase()) || 
+             task.assignedTo.toLowerCase().includes(this.taskSearchTerm.toLowerCase()))
+        );
+}
   
+  getFilteredTasks() {
+    return this.tasks.filter(task =>
+        task.title.toLowerCase().includes(this.taskSearchTerm.toLowerCase()) ||
+        task.assignedTo.toLowerCase().includes(this.taskSearchTerm.toLowerCase())
+    );
+}
 }
 

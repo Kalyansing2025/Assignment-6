@@ -1,4 +1,4 @@
-/* Container Styling */
+
 .task-create-container {
     max-width: 800px;
     margin: 20px auto;
@@ -8,13 +8,13 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading Styling */
+
 h2, h3 {
     text-align: center;
     color: #333;
 }
 
-/* Table Styling */
+
 .task-table {
     width: 100%;
     border-collapse: collapse;
@@ -40,7 +40,7 @@ h2, h3 {
     background-color: #f1f1f1;
 }
 
-/* Form Styling */
+
 form {
     display: flex;
     flex-direction: column;
@@ -147,7 +147,7 @@ button[type="button"]:hover {
     border-radius: 5px;
     cursor: pointer;
     margin-right: 5px;
-  }
+}
   .status-high {
     color: #d9534f;
     font-weight: bold;
@@ -162,37 +162,46 @@ button[type="button"]:hover {
     color: #5cb85c;
     font-weight: bold;
   }
+  
   .filter-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    background: #f8f9fa;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-/* Button - Simple Styling */
-.sort-button {
-    padding: 6px 12px;
+.filter-container .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Keeps label and dropdown close together */
+}
+
+
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the left on small screens */
+        gap: 10px;
+    }
+}
+
+.filter-container label {
+    margin: 0; /* Ensure no extra margin */
     font-size: 14px;
-    border: 1px solid #ccc;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 4px;
+    font-weight: bold;
+    color: #333;
 }
 
-.sort-button:hover {
-    /* background-color: #f0f0f0; */
+.filter-container select {
+    margin: 0;
+    padding: 6px 10px;
 }
 
-/* Label */
-label {
-    font-size: 14px;
-}
-
-/* Dropdown */
-select {
-    padding: 5px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
+.filter-container select:hover {
+    border-color: #007BFF;
 }

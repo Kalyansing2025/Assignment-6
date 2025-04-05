@@ -1,10 +1,9 @@
 <div class="signup-container">
     <h2>Sign Up</h2>
 
-    <!-- Display success message if exists -->
+
     <p *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</p>
 
-    <!-- Display error message if exists -->
     <p *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</p>
 
     <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">

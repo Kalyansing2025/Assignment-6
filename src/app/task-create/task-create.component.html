@@ -12,16 +12,19 @@
 </nav>
 
 <div class="filter-container">
-    <button class="s" (click)="toggleSortOrder()">Toggle Sort Order by Task</button>
-
-    <label for="statusFilter">Filter by Status:</label>
-    <select id="statusFilter" [(ngModel)]="filterStatus">
-        <option value="">All</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-    </select>
+    <input type="text" [(ngModel)]="taskSearchTerm" placeholder="Search Tasks..." class="search-input" />
+    <div class="filter-group">
+        <label for="statusFilter">Filter by Status:</label>
+        <select id="statusFilter" [(ngModel)]="filterStatus">
+            <option value="">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+    </div>
 </div>
+
+
 
 
 
@@ -30,7 +33,7 @@
         <h2> No Task Available:</h2>
     </div>
 
-    <!-- Task List -->
+
     <div *ngIf="tasks.length > 0">
         <h2>Existing Tasks:</h2>
         <table class="task-table">
@@ -66,7 +69,7 @@
     </div>
 
 
-    <!-- Create Task Form -->
+
     <div *ngIf="showTaskForm">
         <h3>{{ editingTaskIndex !== null ? 'Edit Task' : 'Create New Task' }}</h3>
 

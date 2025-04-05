@@ -9,10 +9,10 @@
     <div class="nav-links">
         <button (click)="openProjectModal()">Create Project</button>
         <button (click)="openLogoutModal()">Logout</button>
+
     </div>
 </nav>
 
-<!-- Logout Modal -->
 <div>
     <app-logout *ngIf="showLogoutModal" (closeModal)="closeLogoutModal()"></app-logout>
 
@@ -27,58 +27,51 @@
 </div>
 
 
-
-<!-- Project Form Modal -->
 <div *ngIf="showModal" class="modal">
     <div class="modal-content">
         <h2>Create New Project</h2>
         <form (ngSubmit)="editingIndex !== null ? saveProject() : createProject()">
-            <!-- Project Title -->
-            <!-- Title -->
+
             <label>Title:</label>
             <input type="text" [(ngModel)]="project.title" name="title" required
                 [ngClass]="{ 'invalid': submitted && (titleError || duplicateError), 'valid': submitted && !titleError && !duplicateError }" />
             <p *ngIf="submitted && titleError" class="error-text">Invalid title format!</p>
             <p *ngIf="submitted && duplicateError" class="error-text">Project title already exists!</p>
 
-            <!-- Description -->
             <label>Description:</label>
             <textarea [(ngModel)]="project.description" name="description" required
                 [ngClass]="{ 'invalid': submitted && descriptionError, 'valid': submitted && !descriptionError }"></textarea>
             <p *ngIf="submitted && descriptionError" class="error-text">Description cannot be empty!</p>
 
-            <!-- Created By -->
             <label>Created By:</label>
             <input type="text" [(ngModel)]="project.createdBy" name="createdBy" required
                 [ngClass]="{ 'invalid': submitted && createdByError, 'valid': submitted && !createdByError }" />
             <p *ngIf="submitted && createdByError" class="error-text">Invalid creator name!</p>
 
-            <!-- Project Manager -->
             <label>Project Manager:</label>
             <input type="text" [(ngModel)]="project.projectManager" name="projectManager" required
                 [ngClass]="{ 'invalid': submitted && projectManagerError, 'valid': submitted && !projectManagerError }" />
             <p *ngIf="submitted && projectManagerError" class="error-text">Invalid project manager name!</p>
 
-            <!-- Start Date -->
             <label>Start Date:</label>
             <input type="date" [(ngModel)]="project.startDate" name="startDate" required [min]="today" [max]="maxDate"
                 [ngClass]="{ 'invalid': submitted && dateError, 'valid': submitted && !dateError }" />
             <p *ngIf="submitted && dateError" class="error-text">Invalid date selection!</p>
 
-            <!-- End Date -->
+
             <label>End Date:</label>
             <input type="date" [(ngModel)]="project.endDate" name="endDate" required [min]="project.startDate || today"
                 [max]="maxDate" [ngClass]="{ 'invalid': submitted && dateError, 'valid': submitted && !dateError }" />
             <p *ngIf="submitted && dateError" class="error-text">Invalid date selection!</p>
 
 
-            <!-- Team Members -->
+
             <label>Team Members:</label>
             <input type="number" [(ngModel)]="project.teamMembers" name="teamMembers" required
                 [ngClass]="{ 'invalid': submitted && teamError, 'valid': submitted && !teamError }" />
             <p *ngIf="submitted && teamError" class="error-text">Must have at least 1 team member!</p>
 
-            <!-- Submit Button -->
+
             <button type="submit" (click)="submitted = true">
                 {{ editingIndex !== null ? 'Save' : 'Create' }}
             </button>
@@ -88,26 +81,29 @@
     </div>
 </div>
 
+<div class="sorting-container">
+    <button (click)="toggleSortOrder()">Toggle Sort Order</button>
 
-<!-- Projects Table -->
-<div class="project-table-container">
-    <h2>Projects</h2>
     <div class="sorting-container">
-        <label for="sortProjects">Sort By:</label>
-        <select id="sortProjects" [(ngModel)]="sortBy">
-            <option value="title">Title</option>
-            <option value="createdBy">Created By</option>
-            <option value="projectManager">Project Manager</option>
-            <option value="startDate">Start Date</option>
-            <option value="endDate">End Date</option>
-            <option value="dueDays">Due Days</option>
-            <option value="teamMembers">Team Members</option>
-        </select>
-
-        <button (click)="toggleSortOrder()">Toggle Sort Order</button>
+        <input type="text" [(ngModel)]="projectSearchTerm" placeholder="Search Projects..." class="search-input" />
+        <div class="sorting-group">
+            <label for="sortProjects">Sort By:</label>
+            <select id="sortProjects" [(ngModel)]="sortBy">
+                <option value="title">Title</option>
+                <option value="createdBy">Created By</option>
+                <option value="projectManager">Project Manager</option>
+                <option value="startDate">Start Date</option>
+                <option value="endDate">End Date</option>
+                <option value="dueDays">Due Days</option>
+                <option value="teamMembers">Team Members</option>
+            </select>
+        </div>
     </div>
 
+</div>
 
+<div class="project-table-container">
+    <h2>Projects</h2>
     <table class="project-table">
         <thead>
             <tr>
@@ -126,7 +122,7 @@
             <tr *ngIf="projects.length === 0">
                 <td colspan="9" class="no-projects-message">No projects available</td>
             </tr>
-            <tr *ngFor="let project of projects; let i = index" class="clickable-row">
+            <tr *ngFor="let project of getFilteredProjects(); let i = index" class="clickable-row">
                 <td>{{ project.title }}</td>
                 <td>{{ project.description }}</td>
                 <td>{{ project.createdBy }}</td>

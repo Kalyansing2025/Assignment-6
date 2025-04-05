@@ -17,7 +17,7 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('loggedInUser'); // Clear user data
-    window.location.href = '/login'; // Redirect to login page
+    localStorage.removeItem('loggedInUser'); 
+    window.location.href = '/login'; 
   }
 }
