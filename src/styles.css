@@ -1,11 +1,11 @@
-/* Base dark theme improvements */
+
 body.dark-theme {
     background-color: #121212;
     color: #e0e0e0;
     font-family: 'Segoe UI', sans-serif;
   }
   
-  /* Navbar */
+
   body.dark-theme .navbar {
     background-color: #1f1f1f;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
@@ -13,7 +13,7 @@ body.dark-theme {
     padding: 1rem 2rem;
   }
   
-  /* Buttons */
+
   body.dark-theme button {
     background-color: #2a2a2a;
     color: #f0f0f0;
@@ -27,14 +27,14 @@ body.dark-theme {
     background-color: #3a3a3a;
   }
   
-  /* Modal */
+
   body.dark-theme .modal-content {
     background-color: #1f1f1f;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   }
   
-  /* Inputs */
+ 
   body.dark-theme input,
   body.dark-theme textarea,
   body.dark-theme select {
@@ -45,7 +45,7 @@ body.dark-theme {
     padding: 0.5rem;
   }
   
-  /* Form field focus state */
+
   body.dark-theme input:focus,
   body.dark-theme textarea:focus,
   body.dark-theme select:focus {
@@ -54,8 +54,7 @@ body.dark-theme {
     box-shadow: 0 0 5px rgba(76, 154, 255, 0.3);
   }
   
-  /* Tables */
-  /* === Project Table: Dark Mode === */
+
 body.dark-theme .project-table-container {
     background-color: #1a1a1a;
     border-radius: 10px;
@@ -118,7 +117,7 @@ body.dark-theme .project-table-container {
     background-color: #2f2f2f;
   }
   
-  /* Messages */
+ 
   body.dark-theme .success-message {
     background-color: #1e3d2f;
     color: #a4f4b5;
@@ -139,7 +138,7 @@ body.dark-theme .project-table-container {
     color: #ff6b6b;
   }
   
-  /* Sorting container */
+
   body.dark-theme .sorting-container {
     background-color: #1f1f1f;
     border-radius: 6px;
@@ -147,7 +146,7 @@ body.dark-theme .project-table-container {
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
   }
   
-  /* Search input */
+
   body.dark-theme .search-input {
     background-color: #2c2c2c;
     border: 1px solid #555;
@@ -156,7 +155,7 @@ body.dark-theme .project-table-container {
     padding: 0.4rem 0.8rem;
   }
   
-  /* Add/Edit/Delete Task buttons */
+  
   body.dark-theme .add-task-btn {
     background-color: #28a745;
     color: #fff;
@@ -166,24 +165,17 @@ body.dark-theme .project-table-container {
     background-color: #218838;
   }
   
-  /* body.dark-theme .edit-btn {
-    background-color: #ffc107;
-    color: #000;
-  } */
-/*   
+
   body.dark-theme .edit-btn:hover {
     background-color: #e0a800;
   } */
   
-  /* body.dark-theme .delete-btn {
-    background-color: #dc3545;
-    color: #fff;
-  }
+ 
   
   body.dark-theme .delete-btn:hover {
     background-color: #c82333;
   } */
-  /* === Project Form Fields === */
+ 
   body.dark-theme form,
   body.dark-theme .project-form 
    {
@@ -196,7 +188,7 @@ body.dark-theme .project-table-container {
     gap: 1rem;
   }
   
-  /* Labels */
+ 
   body.dark-theme label {
     color: #cccccc;
     font-weight: 500;
@@ -204,7 +196,7 @@ body.dark-theme .project-table-container {
     display: inline-block;
   }
   
-  /* Inputs, Textareas, Selects */
+ 
   body.dark-theme input,
   body.dark-theme textarea,
   body.dark-theme select {
@@ -226,7 +218,7 @@ body.dark-theme .project-table-container {
     outline: none;
   }
   
-  /* Validation Styles */
+ 
   body.dark-theme .error-text {
     color: #ff6b6b;
     font-size: 0.85rem;
@@ -241,7 +233,7 @@ body.dark-theme .project-table-container {
     border-color: #4caf50 !important;
   }
   
-  /* Buttons inside the form */
+
   body.dark-theme form button {
     margin-top: 1rem;
     padding: 0.6rem 1.2rem;
@@ -257,19 +249,19 @@ body.dark-theme .project-table-container {
     background-color: #4a4a4a;
   }
   
-  /* Group buttons side by side */
+ 
   body.dark-theme form button[type="submit"],
   body.dark-theme form button[type="button"] {
     margin-right: 0.5rem;
     display: inline-block;
   }
   
-  /* Modal title */
+  
   body.dark-theme .modal-content h2 {
     color: #ffffff;
     margin-bottom: 1rem;
   }
-  /* === Dark Mode: Task Create Section === */
+
 body.dark-theme .task-create-container {
     background-color: #1a1a1a;
     padding: 2rem;
@@ -277,14 +269,14 @@ body.dark-theme .task-create-container {
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
   }
   
-  /* Headings */
+ 
   body.dark-theme .task-create-container h2,
   body.dark-theme .task-create-container h3 {
     color: #ffffff;
     margin-bottom: 1rem;
   }
   
-  /* No task message */
+
   body.dark-theme .no-task-message {
     background-color: #262626;
     border-left: 4px solid #555;
@@ -294,7 +286,7 @@ body.dark-theme .task-create-container {
     font-style: italic;
   }
   
-  /* Task table */
+
   body.dark-theme .task-table {
     width: 100%;
     border-collapse: collapse;
@@ -324,7 +316,6 @@ body.dark-theme .task-create-container {
     background-color: #2a2a2a;
   }
   
-  /* Status badge styling (High/Medium/Low) */
   body.dark-theme .High {
     color: #ff6b6b;
     font-weight: bold;
@@ -340,7 +331,7 @@ body.dark-theme .task-create-container {
     font-weight: bold;
   }
   
-  /* Form styling */
+ 
   body.dark-theme .task-create-container form {
     margin-top: 2rem;
     background-color: #1e1e1e;
@@ -374,7 +365,7 @@ body.dark-theme .task-create-container {
     box-shadow: 0 0 5px rgba(76, 154, 255, 0.4);
   }
   
-  /* Buttons */
+
   body.dark-theme .task-create-container button {
     background-color: #3c3c3c;
     color: #f1f1f1;
@@ -389,14 +380,14 @@ body.dark-theme .task-create-container {
     background-color: #4a4a4a;
   }
   
-  /* Form buttons side-by-side */
+ 
   body.dark-theme .task-create-container form button[type="submit"],
   body.dark-theme .task-create-container form button[type="button"] {
     display: inline-block;
     margin-right: 0.5rem;
   }
   
-  /* Message boxes */
+ 
   body.dark-theme .message-box {
     padding: 1rem;
     border-radius: 6px;
@@ -414,7 +405,7 @@ body.dark-theme .task-create-container {
     color: #ff9999;
     border-left: 4px solid #ff6b6b;
   }
-  /* === Navbar Dark Mode === */
+
 body.dark-theme .navbar {
     background-color: #1f1f1f;
     color: #f1f1f1;
@@ -431,7 +422,7 @@ body.dark-theme .navbar {
     color: #ffffff;
   }
   
-  /* Navbar buttons */
+
   body.dark-theme .nav-links button {
     background-color: #2a2a2a;
     color: #f1f1f1;
@@ -447,7 +438,7 @@ body.dark-theme .navbar {
     background-color: #3a3a3a;
   }
   
-  /* === Filter Container Dark Mode === */
+ 
   body.dark-theme .filter-container {
     margin-top: 1rem;
     background-color: #1e1e1e;

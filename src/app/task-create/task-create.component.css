@@ -133,7 +133,7 @@ button[type="button"]:hover {
 }
 
 
-/* Responsive Styles */
+
 @media (max-width: 768px) {
     .navbar {
       flex-direction: column;
@@ -202,20 +202,20 @@ button[type="button"]:hover {
 .filter-container .filter-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Keeps label and dropdown close together */
+    gap: 10px; 
 }
 
 
 @media (max-width: 768px) {
     .filter-container {
         flex-direction: column;
-        align-items: flex-start; /* Align items to the left on small screens */
+        align-items: flex-start;
         gap: 10px;
     }
 }
 
 .filter-container label {
-    margin: 0; /* Ensure no extra margin */
+    margin: 0;
     font-size: 14px;
     font-weight: bold;
     color: #333;
@@ -230,7 +230,7 @@ button[type="button"]:hover {
     border-color: #007BFF;
 }
 
-/* Optional: Stack buttons on small screens */
+
 @media (max-width: 500px) {
     .edit-btn,
     .delete-btn {

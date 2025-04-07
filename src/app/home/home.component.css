@@ -124,7 +124,7 @@ button:hover {
 .clickable-row:hover {
     background-color: #f0f0f0;
 }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
 .navbar {
     display: flex;
@@ -179,7 +179,6 @@ button:hover {
 }
 
 
-/* Responsive behavior */
 @media (max-width: 768px) {
     .navbar {
       flex-direction: column;
@@ -284,7 +283,7 @@ select, button {
 .sorting-container .sorting-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Keeps label and dropdown close together */
+    gap: 10px;
 }
 
 .table-responsive {
@@ -301,7 +300,3 @@ select, button {
       margin-bottom: 6px;
     }
   }
-
-
-      
-

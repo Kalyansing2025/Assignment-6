@@ -1,18 +1,13 @@
 <nav class="navbar">
     <div class="logo">
-        <h2>Task Manager System</h2>
+        <h2>Task Manager </h2>
     </div>
-
     <div class="project-title">
         <h2>Tasks for Project: {{ projectTitle }}</h2>
     </div>
-
     <div class="nav-links">
         <button (click)="toggleTaskForm()" *ngIf="!showTaskForm">Create New Task</button>
         <button (click)="goToHome()">Back to Home</button>
-        <!-- <button (click)="toggleTheme()" class="theme-toggle">
-            Switch to {{ theme === 'light' ? 'Dark' : 'Light' }} Mode
-        </button> -->
     </div>
 </nav>
 
@@ -20,7 +15,7 @@
 <div class="filter-container">
     <input type="text" [(ngModel)]="taskSearchTerm" placeholder="Search Tasks..." class="search-input" />
     <div class="filter-group">
-        <label for="statusFilter">Filter by Status:</label>
+        <label for="statusFilter">Sort by Status:</label>
         <select id="statusFilter" [(ngModel)]="filterStatus">
             <option value="">All</option>
             <option value="High">High</option>
@@ -30,16 +25,10 @@
     </div>
 </div>
 
-
-
-
-
 <div class="task-create-container">
     <div *ngIf="tasks.length === 0" class="no-task-message">
         <h2> No Task Available:</h2>
     </div>
-
-
     <div *ngIf="tasks.length > 0">
         <h2>Existing Tasks:</h2>
         <div class="table-responsive">
@@ -74,11 +63,6 @@
             </table>
         </div>
     </div>
-
-
-
-
-
     <div *ngIf="showTaskForm">
         <h3>{{ editingTaskIndex !== null ? 'Edit Task' : 'Create New Task' }}</h3>
 
