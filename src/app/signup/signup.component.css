@@ -4,20 +4,21 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #93b4c9, #2a73e1);
+  width: 100vh;
+  background: rgb(178,62,198);
+background: linear-gradient(90deg, rgba(178,62,198,1) 0%, rgba(224,6,215,1) 22%, rgba(94,9,219,1) 64%, rgba(0,212,255,1) 100%);
   font-family: Arial, sans-serif;
 }
 
-
-.login-container, .signup-container {
-  width: 350px;
-  padding: 30px;
+ .signup-container {
+  width: 400px;          
+  padding: 10px 20px;  
   background: white;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
 }
+
 
 
 h2 {
@@ -28,9 +29,9 @@ h2 {
 
 
 input {
-  width: 100%;
+  width: 85%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -43,7 +44,7 @@ input:focus {
 
 
 button {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   background: #007bff;
   color: white;
@@ -76,4 +77,12 @@ p {
 
 .text-danger{
   color: red;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 1px;
+font-weight: bold;
 }

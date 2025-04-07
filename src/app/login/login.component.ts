@@ -16,6 +16,7 @@ import { ViewEncapsulation } from '@angular/core';
 export class LoginComponent {
   username = '';
   password = '';
+  rememberMe = false;
   successMessage: string = '';
   errorMessage: string = '';
 

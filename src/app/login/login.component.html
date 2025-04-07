@@ -1,20 +1,48 @@
 <div class="login-container">
+    <h1>Task Management</h1>
     <h2>Login</h2>
 
 
     <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
+
+    <div class="social-buttons">
+        <div class="social-btn microsoft">
+            <div class="icon-box">
+                <img src="https://img.icons8.com/color/24/000000/microsoft.png" alt="Microsoft logo" />
+            </div>
+            <div class="text">Sign In with Microsoft</div>
+        </div>
+        <div class="social-btn google">
+            <div class="icon-box">
+                <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google logo" />
+            </div>
+            <div class="text">Sign In with Google</div>
+        </div>
+    </div>
+    <div class="or-text">Or</div>
+
     <form (ngSubmit)="onLogin()">
         <div>
             <label for="username">Username</label>
-            <input type="text" id="username" [(ngModel)]="username" name="username" required />
+            <input type="text" placeholder="Enter  Username" id="username" [(ngModel)]="username" name="username"
+                required />
         </div>
 
         <div>
             <label for="password">Password</label>
-            <input type="password" id="password" [(ngModel)]="password" name="password" required />
+            <input type="password" placeholder="Enter Password" id="password" [(ngModel)]="password" name="password"
+                required />
         </div>
+        <div class="remember-forgot">
+            <label class="remember-me">
+                <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" />
+                Remember Me
+            </label>
+            <a class="forgot-password" href="#">Forgot password?</a>
+        </div>
+
 
         <button type="submit">Login</button>
     </form>

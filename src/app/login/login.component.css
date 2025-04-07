@@ -4,32 +4,29 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #93b4c9, #2a73e1);
+  width: 100vh;
+  background: rgb(178,62,198);
+background: linear-gradient(90deg, rgba(178,62,198,1) 0%, rgba(224,6,215,1) 22%, rgba(94,9,219,1) 64%, rgba(0,212,255,1) 100%);
   font-family: Arial, sans-serif;
 }
 
 
-.login-container, .signup-container {
-  width: 350px;
-  padding: 30px;
+.login-container {
+  width: 400px;          
+  padding: 10px 20px;  
   background: white;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
 
 
 input {
-  width: 100%;
+  width: 85%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -42,7 +39,7 @@ input:focus {
 
 
 button {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   background: #007bff;
   color: white;
@@ -69,13 +66,173 @@ a:hover {
 }
 
 
-p {
-  margin-top: 15px;
-  font-size: 14px;
-}
+  p {
+    margin-top: 15px;
+    font-size: 14px;
+  }
 .success-message{
 color: green;
 }
 .error-message{
   color: red;
+}
+
+.social-btn {
+  flex: 1 1 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #ccc;
+  background-color: white;
+  box-sizing: border-box;
+  min-width: 140px;
+}
+
+.social-btn .icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-btn .text {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+
+.microsoft {
+  border-color: #0078d4;
+  color: #0078d4;
+}
+                                                       
+.microsoft:hover {
+  background-color: #0078d4;
+  color: white;
+}
+
+.microsoft:hover .icon-box img {
+  filter: brightness(0) invert(1);
+}
+
+
+.google {
+  border-color: #4285f4;
+  color: #4285f4;
+}
+
+.google:hover {
+  background-color: #4285f4;
+  color: white;
+}
+
+.google:hover .icon-box img {
+  filter: brightness(0) invert(1);
+}
+ 
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.or-text{
+  margin-bottom: 10px;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 10px 0;
+  font-size: 14px;
+  /* padding: 0 17px; */
+}
+
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  padding-right: 20px;
+  white-space: nowrap; /* 🛠️ Prevents label from wrapping */
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-left: 5%;
+  margin-bottom: 1px;
+  font-weight: bold;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  padding-right: 20px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%; /* take up more screen on mobile */
+    padding: 20px;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-btn {
+    width: 100%;
+  }
+
+
+  label {
+    margin-left: 2%;
+  }
+
+  .remember-forgot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .login-container {
+    width: 500px;
+  }
+
+  .social-btn {
+    width: 48%;
+  }
+
+  .social-buttons {
+    gap: 10px;
+  }
+
+  label {
+    margin-left: 6%;
+  }
 }

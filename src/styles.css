@@ -168,13 +168,13 @@ body.dark-theme .project-table-container {
 
   body.dark-theme .edit-btn:hover {
     background-color: #e0a800;
-  } */
+  } 
   
  
   
   body.dark-theme .delete-btn:hover {
     background-color: #c82333;
-  } */
+  } 
  
   body.dark-theme form,
   body.dark-theme .project-form 
@@ -481,3 +481,4 @@ body.dark-theme .navbar {
     background-color: #a82332;
   }
   
+ 
