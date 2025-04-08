@@ -29,38 +29,52 @@
     <div class="modal-content">
         <h2>Create New Project</h2>
         <form (ngSubmit)="editingIndex !== null ? saveProject() : createProject()">
-            <label>Title:</label>
+
+            <label>Title: *</label>
             <input type="text" [(ngModel)]="project.title" name="title" required
                 [ngClass]="{ 'invalid': submitted && (titleError || duplicateError), 'valid': submitted && !titleError && !duplicateError }" />
             <p *ngIf="submitted && titleError" class="error-text">Invalid title format!</p>
             <p *ngIf="submitted && duplicateError" class="error-text">Project title already exists!</p>
-            <label>Description:</label>
+
+            <label>Description: *</label>
             <textarea [(ngModel)]="project.description" name="description" required
                 [ngClass]="{ 'invalid': submitted && descriptionError, 'valid': submitted && !descriptionError }"></textarea>
             <p *ngIf="submitted && descriptionError" class="error-text">Description cannot be empty!</p>
-            <label>Created By:</label>
+
+            <label>Created By: *</label>
             <input type="text" [(ngModel)]="project.createdBy" name="createdBy" required
                 [ngClass]="{ 'invalid': submitted && createdByError, 'valid': submitted && !createdByError }" />
             <p *ngIf="submitted && createdByError" class="error-text">Invalid creator name!</p>
-            <label>Project Manager:</label>
+
+            <label>Project Manager: *</label>
             <input type="text" [(ngModel)]="project.projectManager" name="projectManager" required
                 [ngClass]="{ 'invalid': submitted && projectManagerError, 'valid': submitted && !projectManagerError }" />
             <p *ngIf="submitted && projectManagerError" class="error-text">Invalid project manager name!</p>
-            <label>Start Date:</label>
+
+            <label>Start Date: *</label>
             <input type="date" [(ngModel)]="project.startDate" name="startDate" required [min]="today" [max]="maxDate"
                 [ngClass]="{ 'invalid': submitted && dateError, 'valid': submitted && !dateError }" />
-            <p *ngIf="submitted && dateError" class="error-text">Invalid date selection!</p>
-            <label>End Date:</label>
+            <p *ngIf="submitted && (!project.startDate || !project.endDate)" class="error-text">
+                Start Date and End Date are required!
+            </p>
+
+            <label>End Date: *</label>
             <input type="date" [(ngModel)]="project.endDate" name="endDate" required [min]="project.startDate || today"
                 [max]="maxDate" [ngClass]="{ 'invalid': submitted && dateError, 'valid': submitted && !dateError }" />
-            <p *ngIf="submitted && dateError" class="error-text">Invalid date selection!</p>
-            <label>Team Members:</label>
+            <p *ngIf="submitted && isEndDateBeforeStartDate()" class="error-text">
+                End Date must be after Start Date!
+            </p>
+
+
+            <label>Team Members: *</label>
             <input type="number" [(ngModel)]="project.teamMembers" name="teamMembers" required
                 [ngClass]="{ 'invalid': submitted && teamError, 'valid': submitted && !teamError }" />
             <p *ngIf="submitted && teamError" class="error-text">Must have at least 1 team member!</p>
+
             <button type="submit" (click)="submitted = true">
                 {{ editingIndex !== null ? 'Save' : 'Create' }}
             </button>
+
             <button type="button" (click)="closeProjectModal()">Cancel</button>
         </form>
     </div>

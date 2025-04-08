@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   imports: [FormsModule, CommonModule, LogoutComponent],
+  
 })
 export class HomeComponent {
   showModal = false;
@@ -103,10 +104,12 @@ export class HomeComponent {
 
   closeProjectModal() {
     this.resetProjectForm();
+    this.clearValidationErrors();
+    this.submitted = false; 
     this.showModal = false;
     this.editingIndex = null;
   }
-
+  
   openLogoutModal() {
     this.showLogoutModal = true;
   }
@@ -129,23 +132,35 @@ clearValidationErrors() {
 createProject() {
   this.clearValidationErrors();
 
-
   this.project.title = this.project.title?.trim();
   this.project.createdBy = this.project.createdBy?.trim();
   this.project.projectManager = this.project.projectManager?.trim();
 
   const validTextPattern = /^(?!.*(.)\1{4,})[A-Za-z\s\-']{3,}$/;
 
- 
   this.titleError = !this.project.title || !validTextPattern.test(this.project.title);
   this.descriptionError = !this.project.description;
   this.createdByError = !this.project.createdBy || !validTextPattern.test(this.project.createdBy);
   this.projectManagerError = !this.project.projectManager || !validTextPattern.test(this.project.projectManager);
   this.teamError = this.project.teamMembers <= 0;
 
+  // ✅ Date required and validity check
+  this.dateError =
+    !this.project.startDate ||
+    !this.project.endDate ||
+    new Date(this.project.endDate) < new Date(this.project.startDate);
 
-  if (this.titleError || this.descriptionError || this.createdByError || this.projectManagerError || this.teamError) {
-      return; 
+    
+
+  if (
+    this.titleError ||
+    this.descriptionError ||
+    this.createdByError ||
+    this.projectManagerError ||
+    this.teamError ||
+    this.dateError
+  ) {
+    return;
   }
 
   this.duplicateError = this.projects.some(
@@ -160,7 +175,6 @@ createProject() {
     return;
   }
 
- 
   this.calculateDueDays();
 
   if (this.editingIndex !== null) {
@@ -182,6 +196,7 @@ createProject() {
   this.loadProjects();
   this.closeProjectModal();
 }
+
 
 
   
@@ -308,4 +323,11 @@ toggleTheme() {
   document.body.classList.add(`${this.theme}-theme`);
 
 }
+isEndDateBeforeStartDate(): boolean {
+  if (this.project.startDate && this.project.endDate) {
+    return new Date(this.project.endDate) < new Date(this.project.startDate);
+  }
+  return false;
+}
+
 }

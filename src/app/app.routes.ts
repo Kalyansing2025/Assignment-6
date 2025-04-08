@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'create-task/:projectId', component: TaskCreateComponent } 
+  { path: 'create-task/:id', component: TaskCreateComponent }
 ];
 
 export const appRoutingProviders = [

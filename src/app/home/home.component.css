@@ -11,44 +11,73 @@
   align-items: center;
   z-index: 1000;
   padding: 10px;
-}
-
+} 
 
 .modal-content {
   background: white;
-  border-radius: 10px;
-  padding: 20px;
+  padding: 30px 25px;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   box-sizing: border-box;
   overflow-y: auto;
   max-height: 90vh;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+} 
+                                                                                                                                                                                                                                                                                                                                     
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+                                                  
+/* Style labels consistently */
+.modal-content label {
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
 }
 
 @media screen and (max-width: 600px) {
   .modal-content {
-    padding: 15px;
-    max-width: 100%;
-    border-radius: 8px;
+    padding: 20px 15px;
   }
 
-  input, textarea, button {
-    font-size: 14px;
+  .modal-content form {
+    gap: 10px;
   }
 
-  label {
-    font-size: 13px;
+  .modal-content button {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 10px;
   }
-}
+
+  .modal-content button + button {
+    margin-top: 5px;
+  }
+} 
 
 .modal-content input,
 .modal-content textarea {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 3px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
 }
+.modal-content button {
+  width: fit-content;
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
+/* Flex buttons side by side with spacing */
+.modal-content button[type="submit"],
+.modal-content button[type="button"] {
+  display: inline-block;
+  margin-right: 10px;
+} 
 
    
 button {
@@ -143,7 +172,7 @@ button:hover {
     background-color: #f0f0f0;
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-
+                                                             
 .navbar {
     display: flex;
     flex-wrap: wrap;
