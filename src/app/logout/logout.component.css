@@ -18,12 +18,12 @@
     cursor: pointer;
 }
 
-.profile-logo {
+.profile-logo {                                                                                
     width: 100px;
     height: 100px;
     border: 2px solid red;
 }
-
+                         
 
 .profile-logo {
     width: 100px;

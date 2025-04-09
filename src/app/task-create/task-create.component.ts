@@ -83,52 +83,72 @@ export class TaskCreateComponent implements OnInit {
       this.clearMessagesAfterDelay(); 
       return;
     }
-
+  
     const storedTasks = localStorage.getItem('tasks');
-    const tasks = storedTasks ? JSON.parse(storedTasks) : [];
-
-    if (this.editingTaskIndex !== null) {
-      const taskIndex = this.tasks.findIndex(t => t.title === this.tasks[this.editingTaskIndex!].title);
-      tasks[taskIndex] = { ...this.task, project: this.projectTitle };
-      this.tasks[this.editingTaskIndex] = { ...this.task, project: this.projectTitle };
-      this.successMessage = 'Task Updated Successfully!';
+    let allTasks = storedTasks ? JSON.parse(storedTasks) : [];
+  
+    if (this.editingTaskIndex !== null && (this.task as any).id) {
+     
+      const taskIndex = allTasks.findIndex((t: any) => t.id === (this.task as any).id);
+      if (taskIndex !== -1) {
+        allTasks[taskIndex] = { ...this.task, project: this.projectTitle };
+        this.successMessage = 'Task Updated Successfully!';
+      }
     } else {
-      const newTask = { ...this.task, project: this.projectTitle };
-      tasks.push(newTask);
-      this.tasks.push(newTask);
+      const newTask = {
+        ...this.task,
+        id: Date.now(), 
+        project: this.projectTitle,
+      };
+      allTasks.push(newTask);
       this.successMessage = 'Task Created Successfully!';
     }
-
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+  
+    
+    localStorage.setItem('tasks', JSON.stringify(allTasks));
+  
+  
+    this.tasks = allTasks.filter((task: any) => task.project === this.projectTitle);
     this.sortTasks();
-    this.task = { title: '', assignedTo: '', status: 'Medium', estimate: 0, timeSpent: 0 };
+  
+  
+    this.task = {
+      title: '',
+      assignedTo: '',
+      status: 'Medium',
+      estimate: 0,
+      timeSpent: 0,
+    };
     this.editingTaskIndex = null;
     this.showTaskForm = false;
     this.clearMessagesAfterDelay();
-  }
+  }  
 
   editTask(index: number) {
-    this.task = { ...this.tasks[index] };
+    this.task = { ...this.tasks[index] }; 
     this.editingTaskIndex = index;
     this.showTaskForm = true;
   }
+  
 
   deleteTask(index: number) {
     if (confirm('Are you sure you want to delete this task?')) {
       const storedTasks = localStorage.getItem('tasks');
       const tasks = storedTasks ? JSON.parse(storedTasks) : [];
-      
-      const taskIndex = tasks.findIndex((t: { title: string }) => t.title === this.tasks[index].title);
+  
+      const taskId = this.tasks[index].id;
+      const taskIndex = tasks.findIndex((t: any) => t.id === taskId);
       if (taskIndex !== -1) {
         tasks.splice(taskIndex, 1);
         localStorage.setItem('tasks', JSON.stringify(tasks));
       }
-
+  
       this.tasks.splice(index, 1);
       this.successMessage = 'Task Deleted Successfully!';
       this.clearMessagesAfterDelay();
     }
   }
+  
 
   goToHome() {
     this.router.navigate(['/home']);
@@ -170,3 +190,4 @@ export class TaskCreateComponent implements OnInit {
 }
 }
 
+                                                           
