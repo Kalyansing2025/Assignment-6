@@ -21,13 +21,18 @@ body.dark-theme {
     padding: 0.5rem 1rem;
     border-radius: 6px;
     transition: background-color 0.2s;
+    cursor: pointer;
   }
   
   body.dark-theme button:hover {
     background-color: #3a3a3a;
   }
   
-
+  body.dark-theme button:focus {
+    outline: 2px solid #4c9aff;
+    outline-offset: 2px;
+  }
+  
   body.dark-theme .modal-content {
     background-color: #1f1f1f;
     border-radius: 10px;
@@ -35,7 +40,7 @@ body.dark-theme {
   }
   
  
-  body.dark-theme input,
+  /* body.dark-theme input,
   body.dark-theme textarea,
   body.dark-theme select {
     background-color: #2c2c2c;
@@ -52,7 +57,7 @@ body.dark-theme {
     outline: none;
     border-color: #4c9aff;
     box-shadow: 0 0 5px rgba(76, 154, 255, 0.3);
-  }
+  } */
   
 
 body.dark-theme .project-table-container {
@@ -140,12 +145,41 @@ body.dark-theme .project-table-container {
   
 
   body.dark-theme .sorting-container {
-    background-color: #1f1f1f;
-    border-radius: 6px;
+    background-color: #2a2a2a;
+    box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.05);
+    color: #fff;
     padding: 1rem;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  
+    /* Add these lines to control sizing */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
+body.dark-theme .sorting-container button,
+body.dark-theme .sorting-container input,
+body.dark-theme .sorting-container select {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+    flex-shrink: 1;
+    max-width: 100%;
+}
+
+body.dark-theme .sorting-container button:hover {
+    background-color: #555;
+}
+
+body.dark-theme .search-input {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+}
 
   body.dark-theme .search-input {
     background-color: #2c2c2c;
@@ -196,7 +230,6 @@ body.dark-theme .project-table-container {
     display: inline-block;
   }
   
- 
   body.dark-theme input,
   body.dark-theme textarea,
   body.dark-theme select {
@@ -209,6 +242,7 @@ body.dark-theme .project-table-container {
     font-size: 0.95rem;
     transition: border-color 0.2s ease;
   }
+  
   
   body.dark-theme input:focus,
   body.dark-theme textarea:focus,
@@ -292,6 +326,12 @@ body.dark-theme .task-create-container {
     border-collapse: collapse;
   }
   
+  body.dark-theme .task-table tr,
+  body.dark-theme .project-table tr {
+    transition: background-color 0.2s ease;
+  }
+  
+
   body.dark-theme .task-table th,
   body.dark-theme .task-table td {
     padding: 0.75rem 1rem;
@@ -311,6 +351,7 @@ body.dark-theme .task-create-container {
   body.dark-theme .task-table td {
     background-color: #202020;
   }
+  
   
   body.dark-theme .task-table tr:hover {
     background-color: #2a2a2a;
@@ -438,17 +479,35 @@ body.dark-theme .navbar {
     background-color: #3a3a3a;
   }
   
+  body.dark-mode .nav-links2 button {
+    background-color: #339af0; 
+    color: #fff;
+}
+
+body.dark-mode .nav-links2 button:hover {
+    background-color: #1c7ed6; 
+}
  
-  body.dark-theme .filter-container {
-    margin-top: 1rem;
-    background-color: #1e1e1e;
-    padding: 1rem;
-    border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-  }
+body.dark-theme .filter-container {
+  margin-top: 1rem;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+body.dark-theme .filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
   
   body.dark-theme .search-input,
   body.dark-theme .filter-container select {
@@ -457,11 +516,16 @@ body.dark-theme .navbar {
     border: 1px solid #444;
     padding: 0.5rem;
     border-radius: 6px;
+    max-width: 250px;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   body.dark-theme .filter-container label {
     color: #cccccc;
+    font-weight: 500;
     margin-right: 0.5rem;
+    white-space: nowrap;
   }
   body.dark-theme .edit-btn {
     background-color: #007bff;

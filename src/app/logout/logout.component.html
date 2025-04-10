@@ -1,14 +1,12 @@
 <div class="logout-container">
+    <!-- Cancel Button -->
     <button class="close-btn" (click)="closeModal.emit()">✖</button>
-
-
-
+    <!-- Profile Sction  -->
     <div class="profile-section">
         <img src="user.png" alt="Profile Logo" class="profile-logo">
         <h2 class="username">{{ user?.name }}</h2>
         <p class="user-email">{{ user?.email }}</p>
     </div>
-
-
+    <!-- Logout Button  -->
     <button class="logout-btn" (click)="logout()">LOGOUT</button>
 </div>

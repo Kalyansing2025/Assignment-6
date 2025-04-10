@@ -1,19 +1,19 @@
 <div class="login-container">
     <h1>Task Management</h1>
     <h2>Login</h2>
-
-
+    <!-- Success Message -->
     <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-
-
+    <!-- Social-Buttons -->
     <div class="social-buttons">
+        <!-- microsoft -->
         <div class="social-btn microsoft">
             <div class="icon-box">
                 <img src="https://img.icons8.com/color/24/000000/microsoft.png" alt="Microsoft logo" />
             </div>
             <div class="text">Login with Microsoft</div>
         </div>
+        <!-- google -->
         <div class="social-btn google">
             <div class="icon-box">
                 <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google logo" />
@@ -22,14 +22,13 @@
         </div>
     </div>
     <div class="or-text">Or</div>
-
+    <!-- Login Form -->
     <form (ngSubmit)="onLogin()">
         <div>
             <label for="username">Username</label>
             <input type="text" placeholder="Enter  Username" id="username" [(ngModel)]="username" name="username"
                 required />
         </div>
-
         <div>
             <label for="password">Password</label>
             <input type="password" placeholder="Enter Password" id="password" [(ngModel)]="password" name="password"
@@ -42,10 +41,7 @@
             </label>
             <a class="forgot-password" href="#">Forgot password?</a>
         </div>
-
-
         <button type="submit">Login</button>
     </form>
-
     <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
 </div>

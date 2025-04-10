@@ -1,4 +1,4 @@
-
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@
   z-index: 1000;
   padding: 10px;
 } 
-
+/* Modal Content */
 .modal-content {
   background: white;
   padding: 30px 25px;
@@ -22,30 +22,25 @@
   overflow-y: auto;
   max-height: 90vh;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-} 
-                                                                                                                                                                                                                                                                                                                                     
+}                                                                                                                                                                                                                                                                                                                                     
 .modal-content form {
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-                                                  
+}                                            
 /* Style labels consistently */
 .modal-content label {
   font-weight: bold;
   margin-top: 5px;
   color: #333;
 }
-
 @media screen and (max-width: 600px) {
   .modal-content {
     padding: 20px 15px;
   }
-
   .modal-content form {
     gap: 10px;
   }
-
   .modal-content button {
     width: 100%;
     margin-right: 0;
@@ -56,7 +51,6 @@
     margin-top: 5px;
   }
 } 
-
 .modal-content input,
 .modal-content textarea {
   width: 100%;
@@ -71,15 +65,12 @@
   padding: 10px 20px;
   margin-top: 15px;
 }
-
-/* Flex buttons side by side with spacing */
+/* Submit */
 .modal-content button[type="submit"],
 .modal-content button[type="button"] {
   display: inline-block;
   margin-right: 10px;
-} 
-
-   
+}   
 button {
     margin-top: 10px;
     margin-left: 6px;
@@ -88,27 +79,23 @@ button {
     cursor: pointer;
     border-radius: 5px;
 }
-
 button[type="submit"] {
     background-color: #28a745;
     color: white;
-
 }
-
 button[type="button"] {
     background-color: #dc3545;
     color: white;
-}
-                                                     
+}                                                     
 button:hover {
     opacity: 0.8;
 }
-
+/* Project Table */
 .project-table-container {
     margin-top: 0px;
+    padding-top: 40px;
     overflow-x: auto;
 }
-
 .project-table {
     width: 100%;
     height: 50px;
@@ -117,14 +104,12 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 .project-table th,
 .project-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
-
 .project-table thead {
   position: sticky;
   top: 0;
@@ -133,32 +118,24 @@ button:hover {
   z-index: 1;
 } 
 
-
-
 button {
     background-color: #ffae00;
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
- 
+    cursor: pointer; 
 }
-
 button:hover {
     background-color: #0056b3;
 }
-
 .delete-btn {
     background-color: #dc3545;
     padding: 5px 10px;
 }
-
 .delete-btn:hover {
     background-color: #c82333;
 }
-
-
 .no-projects-message {
     text-align: center;
     font-size: 18px;
@@ -166,15 +143,13 @@ button:hover {
     color: #555;
     padding: 15px;
 }
-
 .clickable-row {
     cursor: pointer;
 }
 .clickable-row:hover {
     background-color: #f0f0f0;
-}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                                                             
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+ /*Navbar  */
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -186,31 +161,26 @@ button:hover {
     border-bottom: 1px solid #e4e0e0;
     gap: 10px;
   }
-
+/* Logo */
   .logo h2 {
     margin: 0;
     font-size: 20px;
     color:#ffff;
   }
-
-
   .user-info {
     text-align: center;
     flex: 1;
     color: #ffff;
   }
-  
   .user-info h2 {
     margin: 0;
     font-size: 18px;
   }
-  
   .user-info p {
     margin: 0;
     font-size: 14px;
     color: #ece8e8;
   }
-
 .nav-links button {
     padding: 10px 15px;
     margin-left: 15px;
@@ -223,50 +193,59 @@ button:hover {
     cursor: pointer;
     transition: 0.3s;
 }
-
-.nav-links button:hover {
-    background-color: #0056b3;
-    color: white;
+.nav-links2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-
-
+.nav-links2 button {
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff; 
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.nav-links2 h2 {
+  margin: 0;
+}
+.nav-links2 button:hover {
+  background-color: #0056b3;
+}
+/* Navbar Media Query  */
 @media (max-width: 768px) {
     .navbar {
       flex-direction: column;
       align-items: flex-start;
       height: auto;
     }
-  
     .nav-links {
       width: 100%;
       justify-content: flex-start;
     }
-  
     .user-info {
       text-align: left;
       width: 100%;
     }
   }
-
-
+/* Validation color */
 .invalid {
     border: 2px solid red;
     background-color: #ffe6e6;
   }
-  
-
   .valid {
     border: 2px solid green;
     background-color: #e6ffe6;
   }
-  
-  
   .error-text {
     color: red;
     font-size: 14px;
     margin-top: 0px;
   }
-  
   .success-message {
     color: green;
     font-weight: bold;
@@ -276,7 +255,6 @@ button:hover {
     border-radius: 5px;
     text-align: center;
   }
-  
   .error-message {
     color: red;
     font-weight: bold;
@@ -286,6 +264,7 @@ button:hover {
     border-radius: 5px;
     text-align: center;
   }
+  /* Edit Button */
   .edit-btn {
   background-color: #007bff;
   color: white;
@@ -294,7 +273,7 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-
+/* Add Task Button */
 .add-task-btn{
     background-color: #cd5fc4;
     color: white;
@@ -302,48 +281,78 @@ button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  
 }
+/* Sorting Container */
 .sorting-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  width: 98%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-
-select, button {
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
+.sorting-container > * {
+  flex: 1 1 100%;
+  min-width: 100%;
 }
-
-.sorting-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f8f9fa;
-    padding: 12px 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 0px;
-    flex-wrap: wrap;
+.sorting-container input[type="text"],
+.sorting-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+}  
+.sorting-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #777f87;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
-
+.sorting-container button:hover {
+  background-color: #0056b3;
+}
+.sorting-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 .sorting-container .sorting-group {
-    display: flex;
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+}
+/* Media Query Sortin */
+@media (min-width: 601px) {
+  .sorting-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .sorting-container > * {
+    flex: 1 1 200px;
+    min-width: 200px;
+  }
+  .sorting-container .sorting-group {
+    flex-direction: row;  
     align-items: center;
     gap: 10px;
+    width: auto;
+  }
 }
-
+/* Table Responsive */
 .table-responsive {
-  max-height: 400px; /* Adjust height as needed */
+  max-height: 400px;
   overflow-y: auto;
   display: block;
   border: 1px solid #ccc;
 }
-
   @media (max-width: 600px) {
     .add-task-btn,
     .edit-btn,

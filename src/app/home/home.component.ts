@@ -50,9 +50,7 @@ export class HomeComponent {
   teamError = false;
 
   constructor(private router: Router) {}
- 
-
- 
+  // Dark Mode 
   ngOnInit() {
     const storedTheme = localStorage.getItem('theme');
     this.theme = storedTheme ?? 'light';
@@ -74,15 +72,13 @@ export class HomeComponent {
     maxDateValue.setFullYear(todayDate.getFullYear() + 5);
     this.maxDate = this.formatDate(maxDateValue);
   }
-  
-
+  // Redirect on Create Task
   navigateToTaskCreate(project: any) {
     this.router.navigate(['/create-task', project.id], { 
       queryParams: { project: project.title } 
     });
   }
   
-
   loadUser() {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -101,7 +97,7 @@ export class HomeComponent {
   openProjectModal() {
     this.showModal = true;
   }
-
+  // Close Project
   closeProjectModal() {
     this.resetProjectForm();
     this.clearValidationErrors();
@@ -109,15 +105,14 @@ export class HomeComponent {
     this.showModal = false;
     this.editingIndex = null;
   }
-  
+  // Open Logout
   openLogoutModal() {
     this.showLogoutModal = true;
   }
-
+  // Close Logou
   closeLogoutModal() {
     this.showLogoutModal = false;
   }
-
 clearValidationErrors() {
   this.titleError = false;
   this.descriptionError = false;
@@ -127,11 +122,9 @@ clearValidationErrors() {
   this.duplicateError = false;
   this.teamError = false;
 }
-
-
+// Create Project
 createProject() {
   this.clearValidationErrors();
-
   this.project.title = this.project.title?.trim();
   this.project.createdBy = this.project.createdBy?.trim();
   this.project.projectManager = this.project.projectManager?.trim();
@@ -144,13 +137,10 @@ createProject() {
   this.projectManagerError = !this.project.projectManager || !validTextPattern.test(this.project.projectManager);
   this.teamError = this.project.teamMembers <= 0;
 
-  // ✅ Date required and validity check
   this.dateError =
     !this.project.startDate ||
     !this.project.endDate ||
-    new Date(this.project.endDate) < new Date(this.project.startDate);
-
-    
+    new Date(this.project.endDate) < new Date(this.project.startDate); 
 
   if (
     this.titleError ||
@@ -174,7 +164,6 @@ createProject() {
     this.clearValidationErrors();
     return;
   }
-
   this.calculateDueDays();
 
   if (this.editingIndex !== null) {
@@ -197,9 +186,6 @@ createProject() {
   this.closeProjectModal();
 }
 
-
-
-  
   resetProjectForm() {
     this.project = {
       id: '',
@@ -213,14 +199,14 @@ createProject() {
       dueDays: 0,
     };
   }
-
+  // Edit Project
   editProject(index: number) {
     this.project = { ...this.projects[index] };
     this.editingIndex = index;
     this.showModal = true;
     this.calculateDueDays();
   }
-
+  // Save Project
   saveProject() {
     if (this.editingIndex !== null) {
       this.calculateDueDays();
@@ -233,7 +219,7 @@ createProject() {
       this.calculateDueDays();
     }
   }
-
+  // Calculate Due Days
   calculateDueDays() {
     if (this.project.startDate && this.project.endDate) {
       const start = new Date(this.project.startDate);
@@ -251,10 +237,7 @@ createProject() {
     const allTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
     return allTasks.filter((task: any) => task.project === projectTitle).length;
   }
-  
-  
-  
-
+  // Delete Project
   deleteProject(index: number) {
     if (confirm('Are you sure you want to delete this project?')) {
       this.projects.splice(index, 1);
@@ -264,11 +247,11 @@ createProject() {
       setTimeout(() => (this.errorMessage = ''), 3000);
     }
   }
-
+  // Save Projects
   saveProjects() {
     localStorage.setItem('projects', JSON.stringify(this.projects));
   }
-
+  // Load Projects
   loadProjects() {
     const storedProjects = localStorage.getItem('projects');
     if (storedProjects && this.user) {
@@ -289,25 +272,21 @@ toggleSortOrder() {
     this.sortAscending = !this.sortAscending; 
     this.sortProjects();
 }
-
+// Sort Project
 sortProjects() {
     this.projects.sort((a, b) => {
         let valueA = a[this.sortBy];
         let valueB = b[this.sortBy];
-
-
         if (this.sortBy === 'startDate' || this.sortBy === 'endDate') {
             valueA = new Date(valueA);
             valueB = new Date(valueB);
         }
-
         if (valueA < valueB) return this.sortAscending ? -1 : 1;
         if (valueA > valueB) return this.sortAscending ? 1 : -1;
         return 0;
-    });
-    
+    });    
 }                                                           
-
+// Filter Project
 getFilteredProjects() {
   return this.projects.filter(project =>
       project.title.toLowerCase().includes(this.projectSearchTerm.toLowerCase()) ||
@@ -315,7 +294,7 @@ getFilteredProjects() {
       project.createdBy.toLowerCase().includes(this.projectSearchTerm.toLowerCase())
   );
 }
-
+// Dark Mode
 toggleTheme() {
   this.theme = this.theme === 'light' ? 'dark' : 'light';
   localStorage.setItem('theme', this.theme);

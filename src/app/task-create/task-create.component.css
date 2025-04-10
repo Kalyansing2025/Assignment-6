@@ -1,4 +1,5 @@
 
+/* Task Create  */
 .task-create-container {
     max-width: 800px;
     margin: 20px auto;
@@ -7,36 +8,29 @@
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
 h2, h3 {
     text-align: center;
     color: #333;
 }
-
-
 .task-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
     min-width: 600px;
+    
   }
-
 .task-table th, .task-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
 }
-
 .task-table th {
-    background-color: #cae350;
+    background-color: #0d0d0b;
     color: white;
 }
-
 .task-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
 .task-table tr:hover {
     background-color: #f1f1f1;
 }
@@ -82,7 +76,7 @@ button[type="button"] {
 button[type="button"]:hover {
     background-color: #a82332;
 }
-
+/* Messege Error and Success */
 .message-box {
     padding: 10px;
     border-radius: 5px;
@@ -103,6 +97,7 @@ button[type="button"]:hover {
     color: #006400;
 }
 
+/* Navbar */
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -110,10 +105,17 @@ button[type="button"]:hover {
     align-items: center;
     padding: 10px 20px;
     height: 60px;
-    background-color: #b9a6aa;
+    background-color: #080606;
     border-bottom: 1px solid #ccc;
     gap: 10px;
-  }                                            
+  }       
+  .logo h2,
+.project-title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f9f6f6;
+}  
 .nav-links button {
     padding: 10px 15px;
     margin-left: 15px;
@@ -125,44 +127,36 @@ button[type="button"]:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-}
-                                                                                                                                                    
+}                                                                                                                                                    
 .nav-links button:hover {
     background-color: #0056b3;
     color: white;
 }
-
-
-
+/* Media Query of Navbar */
 @media (max-width: 768px) {
     .navbar {
       flex-direction: column;
       align-items: flex-start;
       height: auto;
-    }
-  
+    }  
     .project-title {
       text-align: left;
       width: 100%;
-    }
-  
+    }  
     .nav-links {
       width: 100%;
       justify-content: flex-start;
       flex-wrap: wrap;
     }
   }
-
-
+/* Edit and Delete Button */
 .delete-btn {
     background-color: #dc3545;
     padding: 5px 10px;
 }
-
 .delete-btn:hover {
     background-color: #c82333;
 }
-
 .edit-btn {
     background-color: #007bff;
     color: white;
@@ -172,21 +166,20 @@ button[type="button"]:hover {
     cursor: pointer;
     margin-right: 5px;
 }
+/* Status */
   .status-high {
     color: #d9534f;
     font-weight: bold;
-  }
-  
+  }  
   .status-medium {
     color: #f0ad4e;
     font-weight: bold;
-  }
-  
+  }  
   .status-low {
     color: #5cb85c;
     font-weight: bold;
   }
-  
+  /* Filter */
   .filter-container {
     display: flex;
     justify-content: space-between;
@@ -195,17 +188,15 @@ button[type="button"]:hover {
     padding: 12px 20px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    gap: 1rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
 }
-
 .filter-container .filter-group {
     display: flex;
     align-items: center;
-    gap: 10px; 
+   gap: 0.5rem;
 }
-
-
 @media (max-width: 768px) {
     .filter-container {
         flex-direction: column;
@@ -213,24 +204,20 @@ button[type="button"]:hover {
         gap: 10px;
     }
 }
-
 .filter-container label {
     margin: 0;
     font-size: 14px;
     font-weight: bold;
     color: #333;
 }
-
 .filter-container select {
     margin: 0;
     padding: 6px 10px;
 }
-
 .filter-container select:hover {
     border-color: #007BFF;
 }
-
-
+/* Edit and Delete Media Query */
 @media (max-width: 500px) {
     .edit-btn,
     .delete-btn {
@@ -239,7 +226,6 @@ button[type="button"]:hover {
       width: 100%;
     }
   }
-
   @media (max-width: 600px) {
     .edit-btn,
     .delete-btn {
@@ -248,22 +234,20 @@ button[type="button"]:hover {
       margin-bottom: 5px;
     }
   }
-
+/* Table Responsive */
   .table-responsive {
     width: 100%;
     overflow-x: auto;
   }
-
+/* Body Light Theme */
   body.light-theme {
     background-color: #fff;
     color: #111;
   }
-  
   body.dark-theme {
     background-color: #121212;
     color: #f0f0f0;
   }
-  
   .theme-toggle {
     position: fixed;
     top: 10px;

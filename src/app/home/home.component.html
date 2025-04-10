@@ -1,3 +1,4 @@
+<!-- Navbar -->
 <nav class="navbar">
     <div class="logo">
         <h2>Task Manager</h2>
@@ -9,13 +10,15 @@
     </div>
 
     <div class="nav-links">
-        <!-- <button (click)="openProjectModal()">Create Project</button> -->
+        <button (click)="toggleTheme()" class="theme-toggle">
+            Switch to {{ theme === 'light' ? 'Dark' : 'Light' }} Mode
+        </button>
         <button (click)="openLogoutModal()">Logout</button>
     </div>
 </nav>
+<!-- Logout (Modal) -->
 <div>
     <app-logout *ngIf="showLogoutModal" (closeModal)="closeLogoutModal()"></app-logout>
-
 </div>
 
 <div *ngIf="successMessage" class="success-message">
@@ -25,6 +28,7 @@
 <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
 </div>
+<!-- Create Project (Modal) -->
 <div *ngIf="showModal" class="modal">
     <div class="modal-content">
         <h2>Create New Project</h2>
@@ -79,35 +83,30 @@
         </form>
     </div>
 </div>
-
+<!-- Sorting Container -->
 <div class="sorting-container">
-    <button (click)="toggleTheme()" class="theme-toggle">
-        Switch to {{ theme === 'light' ? 'Dark' : 'Light' }} Mode
-    </button>
     <button (click)="toggleSortOrder()">Ascending & Descending Order</button>
-    <div class="sorting-container">
-        <input type="text" [(ngModel)]="projectSearchTerm" placeholder="Search Projects..." class="search-input" />
-        <div class="sorting-group">
-            <label for="sortProjects">Sort By:</label>
-            <select id="sortProjects" [(ngModel)]="sortBy">
-                <option value="title">Title</option>
-                <option value="createdBy">Created By</option>
-                <option value="projectManager">Project Manager</option>
-                <option value="startDate">Start Date</option>
-                <option value="endDate">End Date</option>
-                <option value="dueDays">Due Days</option>
-                <option value="teamMembers">Team Members</option>
-            </select>
-        </div>
+    <input type="text" [(ngModel)]="projectSearchTerm" placeholder="Search Projects..." class="search-input" />
+    <div class="sorting-group">
+        <label for="sortProjects">Sort By:</label>
+        <select id="sortProjects" [(ngModel)]="sortBy">
+            <option value="title">Title</option>
+            <option value="createdBy">Created By</option>
+            <option value="projectManager">Project Manager</option>
+            <option value="startDate">Start Date</option>
+            <option value="endDate">End Date</option>
+            <option value="dueDays">Due Days</option>
+            <option value="teamMembers">Team Members</option>
+        </select>
     </div>
 </div>
-
-<div class="nav-links">
-    <button (click)="openProjectModal()">Create Project</button>
-</div>
-
+<!-- Project Table Container -->
 <div class="project-table-container">
-    <h2>Projects</h2>
+    <div class="nav-links2">
+        <h2>Projects</h2>
+        <button (click)="openProjectModal()">Create Project</button>
+    </div>
+    <!-- Project Table Heading  -->
     <div class="table-responsive">
         <table class="project-table">
             <thead>
@@ -124,6 +123,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
+            <!-- Project Table Body  -->
             <tbody>
                 <tr *ngIf="projects.length === 0">
                     <td colspan="9" class="no-projects-message">No projects available</td>

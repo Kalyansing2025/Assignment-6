@@ -76,7 +76,7 @@ export class TaskCreateComponent implements OnInit {
     this.showTaskForm = !this.showTaskForm;
     this.editingTaskIndex = null;
   }
-
+// Create Task
   createTask() {
     if (!this.task.title.trim() || !this.task.assignedTo.trim()) {
       this.errorMessage = 'Task Title and Assigned To fields are required.';
@@ -123,14 +123,13 @@ export class TaskCreateComponent implements OnInit {
     this.showTaskForm = false;
     this.clearMessagesAfterDelay();
   }  
-
+// Edit Task
   editTask(index: number) {
     this.task = { ...this.tasks[index] }; 
     this.editingTaskIndex = index;
     this.showTaskForm = true;
   }
-  
-
+  // Delete
   deleteTask(index: number) {
     if (confirm('Are you sure you want to delete this task?')) {
       const storedTasks = localStorage.getItem('tasks');
@@ -148,8 +147,7 @@ export class TaskCreateComponent implements OnInit {
       this.clearMessagesAfterDelay();
     }
   }
-  
-
+  // Go To Home
   goToHome() {
     this.router.navigate(['/home']);
   }
@@ -173,6 +171,7 @@ export class TaskCreateComponent implements OnInit {
         return '';
     }
   }
+  // Filter Tasks
   filteredTasks() {
     return this.tasks
         .filter(task => 
@@ -180,8 +179,7 @@ export class TaskCreateComponent implements OnInit {
             (task.title.toLowerCase().includes(this.taskSearchTerm.toLowerCase()) || 
              task.assignedTo.toLowerCase().includes(this.taskSearchTerm.toLowerCase()))
         );
-}
-  
+}  
   getFilteredTasks() {
     return this.tasks.filter(task =>
         task.title.toLowerCase().includes(this.taskSearchTerm.toLowerCase()) ||

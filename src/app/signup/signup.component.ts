@@ -23,13 +23,12 @@ export class SignupComponent {
   emailExists = false;
 
   constructor(private router: Router) {}
-
+// Signup
   onSignup(form: NgForm) {
     if (form.invalid) return;
 
     const storedUsers = localStorage.getItem('users');
     const users = storedUsers ? JSON.parse(storedUsers) : [];
-
    
     if (users.some((user: any) => user.email === this.email)) {
       this.emailExists = true;
@@ -40,13 +39,12 @@ export class SignupComponent {
       this.errorMessage = '';
     }
 
-   
-    users.push({ username: this.username, email: this.email, password: this.password });
+      users.push({ username: this.username, email: this.email, password: this.password });
     localStorage.setItem('users', JSON.stringify(users));
 
     this.successMessage = 'Account created successfully! Redirecting to login...';
 
-  
+  // Set Timeout For Retirect on Login Page
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 2000);

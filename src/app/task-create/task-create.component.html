@@ -1,3 +1,4 @@
+<!-- Navbar -->
 <nav class="navbar">
     <div class="logo">
         <h2>Task Manager </h2>
@@ -10,8 +11,7 @@
         <button (click)="goToHome()">Back to Home</button>
     </div>
 </nav>
-
-
+<!-- Sorting and Filtering -->
 <div class="filter-container">
     <input type="text" [(ngModel)]="taskSearchTerm" placeholder="Search Tasks..." class="search-input" />
     <div class="filter-group">
@@ -24,12 +24,14 @@
         </select>
     </div>
 </div>
-
+<!-- Task Create -->
 <div class="task-create-container">
     <div *ngIf="tasks.length === 0" class="no-task-message">
+        <!-- No Task Available -->
         <h2> No Task Available:</h2>
     </div>
     <div *ngIf="tasks.length > 0">
+        <!-- Existing Tasks -->
         <h2>Existing Tasks:</h2>
         <div class="table-responsive">
             <table class="task-table">
@@ -63,6 +65,7 @@
             </table>
         </div>
     </div>
+    <!-- Create Task  -->
     <div *ngIf="showTaskForm">
         <h3>{{ editingTaskIndex !== null ? 'Edit Task' : 'Create New Task' }}</h3>
 

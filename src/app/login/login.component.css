@@ -9,8 +9,7 @@ body {
 background: linear-gradient(90deg, rgba(178,62,198,1) 0%, rgba(224,6,215,1) 22%, rgba(94,9,219,1) 64%, rgba(0,212,255,1) 100%);
   font-family: Arial, sans-serif;
 }
-
-
+/* login-container  */
 .login-container {
   width: 400px;          
   padding: 10px 20px;  
@@ -19,10 +18,6 @@ background: linear-gradient(90deg, rgba(178,62,198,1) 0%, rgba(224,6,215,1) 22%,
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
-
-
-
-
 input {
   width: 85%;
   padding: 10px;
@@ -32,12 +27,10 @@ input {
   font-size: 16px;
   outline: none;
 }
-
 input:focus {
   border-color: #007bff;
 }
-
-
+/* .google and .microsoft button */
 button {
   width: 90%;
   padding: 12px;
@@ -49,23 +42,17 @@ button {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 button:hover {
   background: #0056b3;
 }
-
-
 a {
   text-decoration: none;
   color: #007bff;
   font-weight: bold;
 }
-
 a:hover {
   text-decoration: underline;
 }
-
-
   p {
     margin-top: 15px;
     font-size: 14px;
@@ -93,48 +80,31 @@ color: green;
   box-sizing: border-box;
   min-width: 170px;
 }
-
 .social-btn .icon-box {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .social-btn .text {
   white-space: nowrap;
   font-weight: 500;
 }
-
-
 .microsoft {
   border-color: #0078d4;
   color: #0078d4;
-}
-                                                       
+}                                               
 .microsoft:hover {
   background-color: #0078d4;
   color: white;
 }
-
-.microsoft:hover .icon-box img {
-  filter: brightness(0) invert(1);
-}
-
-
 .google {
   border-color: #4285f4;
   color: #4285f4;
 }
-
 .google:hover {
   background-color: #4285f4;
   color: white;
 }
-
-.google:hover .icon-box img {
-  filter: brightness(0) invert(1);
-}
- 
 .social-buttons {
   display: flex;
   justify-content: space-between;
@@ -144,21 +114,22 @@ color: green;
   max-width: 100%;
   padding: 0 20px;
 }
-
+.social-btn .icon-box {
+  background-color: white;
+  padding: 4px;
+  border-radius: 4px; 
+}
 .or-text{
   margin-bottom: 10px;
 }
-
 .remember-forgot {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 5px 0 10px 0;
-  font-size: 14px;
-  
+  font-size: 14px;  
 }
-
-
+/* remember-me  */
 .remember-me {
   display: flex;
   align-items: center;
@@ -166,8 +137,7 @@ color: green;
   color: #333;
   padding-right: 20px;
   white-space: nowrap; 
-}
-
+}                                                                             
 label {
   display: block;
   text-align: left;
@@ -175,45 +145,37 @@ label {
   margin-bottom: 1px;
   font-weight: bold;
 }
-
+/* forgot-password */
 .forgot-password {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
   padding-right: 20px;
 }
-
 .forgot-password:hover {
   text-decoration: underline;
 }
-
 @media (max-width: 768px) {
   .login-container {
-    width: 90%; /* take up more screen on mobile */
+    width: 90%;
     padding: 20px;
   }
-
   .social-buttons {
     flex-direction: column;
     gap: 10px;
   }
-
   .social-btn {
     width: 100%;
   }
-
-
   label {
     margin-left: 2%;
   }
-
   .remember-forgot {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
     padding: 0;
   }
-
   button {
     width: 100%;
   }
@@ -223,15 +185,12 @@ label {
   .login-container {
     width: 500px;
   }
-
   .social-btn {
     width: 48%;
   }
-
   .social-buttons {
     gap: 10px;
   }
-
   label {
     margin-left: 6%;
   }

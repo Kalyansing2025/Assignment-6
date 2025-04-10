@@ -21,7 +21,7 @@ export class LoginComponent {
   errorMessage: string = '';
 
   constructor(private router: Router) {}
-
+// Login
   onLogin() {
     console.log('Logging in with:', this.username, this.password);
 
@@ -50,7 +50,7 @@ export class LoginComponent {
       this.clearMessagesAfterDelay();
     }
   }
-
+// In REdirect on Home Page
   clearMessagesAfterDelay() {
     setTimeout(() => {
       this.successMessage = '';
